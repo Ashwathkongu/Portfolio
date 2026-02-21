@@ -59,7 +59,7 @@ export default function About() {
                                 </li>
                                 <li className="flex items-start gap-3">
                                     <svg className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                                    <span>Strong foundation in NLP, Python, and C</span>
+                                    <span>Strong foundation in AI, Python, and C</span>
                                 </li>
                                 <li className="flex items-start gap-3">
                                     <svg className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
@@ -98,7 +98,7 @@ export default function About() {
                                 className="absolute -bottom-8 -left-4 md:-left-10 bg-black border border-green-500 px-5 py-4 rounded-xl shadow-[0_10px_40px_rgba(34,197,94,0.15)] flex items-center gap-4 z-20 animate-float-smooth"
                             >
                                 <div className="w-12 h-12 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center font-black text-xl">
-                                    2+
+                                    1+
                                 </div>
                                 <div>
                                     <p className="text-white font-bold text-sm leading-tight">Years of<br />Experience</p>
