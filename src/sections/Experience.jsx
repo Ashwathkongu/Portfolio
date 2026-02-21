@@ -76,13 +76,6 @@ export default function Experience() {
                                         {!isEven && (
                                             <ExperienceCard exp={exp} isEven={isEven} />
                                         )}
-
-                                        {/* Mobile fallback rendering (when md is hidden, we just render cards linearly) */}
-                                        {isEven && (
-                                            <div className="md:hidden">
-                                                <ExperienceCard exp={exp} isEven={false} />
-                                            </div>
-                                        )}
                                     </div>
 
                                 </div>

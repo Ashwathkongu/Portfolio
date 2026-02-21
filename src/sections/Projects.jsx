@@ -26,8 +26,8 @@ export default function Projects() {
             title: 'Smart AI Notes Summarizer',
             description: 'AI-based offline NLP summarization system utilizing lightweight language models. Features include automated quiz generation and image/audio-based explanations optimized for low-resource environments.',
             tech: ['Python', 'NLP', 'Machine Learning'],
-            github: '#',
-            live: '#',
+            github: 'https://github.com/AshwathNagarajan/AI-Notes-Generator-Hackelite',
+            //live: '#',
             gradient: 'linear-gradient(135deg, rgba(5, 150, 105, 0.4) 0%, rgba(16, 185, 129, 0.2) 50%, rgba(34, 197, 94, 0.1) 100%)',
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-green-400">
@@ -41,8 +41,8 @@ export default function Projects() {
             title: 'Plagiarism Checker',
             description: 'Console-based plagiarism detection system built using pure C. Implements string hashing algorithms and file-based storage to detect overlapping content with high memory efficiency.',
             tech: ['C', 'Algorithms', 'Data Structures'],
-            github: '#',
-            live: '#',
+            github: 'https://github.com/AshwathNagarajan/Plagarisim-Checker',
+            //live: '#',
             gradient: 'linear-gradient(135deg, rgba(20, 83, 45, 0.4) 0%, rgba(34, 197, 94, 0.2) 50%, rgba(132, 204, 22, 0.1) 100%)',
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-green-400">
@@ -57,8 +57,8 @@ export default function Projects() {
             title: 'Gamified Offline Learning',
             description: 'Interactive learning games using pure JavaScript and animated SVGs. Features multi-lingual support, chapter-wise quizzes, and offline capabilities for poor connectivity areas.',
             tech: ['JavaScript', 'HTML/CSS', 'SVG'],
-            github: '#',
-            live: '#',
+            github: 'https://github.com/AshwathNagarajan/funfinity',
+            //live: '#',
             gradient: 'linear-gradient(135deg, rgba(31, 41, 55, 0.4) 0%, rgba(55, 65, 81, 0.2) 50%, rgba(107, 114, 128, 0.1) 100%)',
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-green-400">
@@ -99,15 +99,6 @@ export default function Projects() {
 
                                 {/* Hover Overlay */}
                                 <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-smooth duration-300 flex items-center justify-center gap-4 backdrop-blur-md will-change-opacity">
-                                    <a
-                                        href={project.live}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="p-3 bg-green-500 text-black rounded-full hover:bg-green-400 hover:scale-110 transition-smooth shadow-lg focus-ring will-change-transform"
-                                        aria-label="View Live Project"
-                                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
-                                    </a>
                                     <a
                                         href={project.github}
                                         target="_blank"

@@ -30,7 +30,7 @@ export default function Navbar() {
                     className={`text-2xl font-black tracking-tighter ${isScrolled ? 'text-white' : 'text-white mix-blend-difference'
                         }`}
                 >
-                    <div className="w-10 h-10 border-2 border-current flex items-center justify-center transform -skew-x-12">
+                    <div className="w-10 h-10 border-2 border-green-400 text-green-400 flex items-center justify-center transform -skew-x-12">
                         AN
                     </div>
                 </a>

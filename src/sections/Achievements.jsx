@@ -25,7 +25,7 @@ export default function Achievements() {
         {
             category: 'Education',
             title: 'B.Tech AI & Data Science',
-            date: 'Aug 2024 - July 2028',
+            date: 'Aug 2024 - July 2028 (Active)',
             description: (
                 <>
                     <p className="font-semibold text-white mb-1">Kongu Engineering College, Perundurai, Erode</p>
@@ -40,7 +40,7 @@ export default function Achievements() {
         },
         {
             category: 'Education',
-            title: 'Higher Secondary (CBSE)',
+            title: 'Schooling',
             date: 'Completed',
             description: (
                 <>

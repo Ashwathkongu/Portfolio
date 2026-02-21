@@ -25,7 +25,7 @@ export default function Skills() {
     const skills = [
         {
             name: 'Programming Languages',
-            items: ['Python', 'Java', 'C', 'C++', 'JavaScript'],
+            items: ['Python', 'Java', 'C', 'R', 'JavaScript'],
             icon: <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
         },
         {
@@ -35,17 +35,17 @@ export default function Skills() {
         },
         {
             name: 'Databases',
-            items: ['MongoDB', 'SQL'],
+            items: ['MongoDB', 'MySQL'],
             icon: <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
         },
         {
             name: 'Core Areas',
-            items: ['Natural Language Processing', 'Algorithm Design', 'Data Processing', 'Lightweight System Design', 'Offline AI Systems'],
+            items: ['Deep Learning', 'Algorithm Design', 'Data Processing', 'Lightweight System Design', 'Offline AI Systems'],
             icon: <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
         }
     ];
 
-    const topSkills = ['Python', 'C++', 'Java', 'JavaScript', 'SQL', 'NLP', 'MongoDB', 'AI'];
+    const topSkills = ['Python', 'R', 'Java', 'JavaScript', 'SQL', 'DL', 'MongoDB', 'AI'];
 
     return (
         <section id="skills" className="py-24 bg-[#0a0a0a] text-white overflow-hidden" ref={sectionRef}>
