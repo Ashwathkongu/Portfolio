@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    @apply bg-black text-white;
+  }
+}
+
+@layer utilities {
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black;
+  }
+
+  /* Smooth Gradient Animations */
+  .animate-gradient-shift {
+    background-size: 400% 400%;
+    animation: gradientShift 12s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+  }
+
+  /* Premium Glow Effect */
+  .glow-effect {
+    will-change: filter;
+  }
+
+  /* Smooth Transforms */
+  .transition-smooth {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition-duration: 400ms;
+  }
+
+  .transition-smooth-lg {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition-duration: 600ms;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes orbitSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitCounterSpin {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes smoothPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes floatSmooth {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-orbit {
+  animation: orbitSpin 45s linear infinite;
+}
+
+.animate-orbit-counter {
+  animation: orbitCounterSpin 45s linear infinite;
+}
+
+.animate-orbit-slow {
+  animation: orbitSpin 60s linear infinite reverse;
+}
+
+.animate-float-smooth {
+  animation: floatSmooth 4s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+}
