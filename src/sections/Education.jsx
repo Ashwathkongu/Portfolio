@@ -20,9 +20,10 @@ const Education = () => {
     },
     {
       level: 'secondary',
-      degree: 'HSC',
+      degree: 'Higher Secondary',
       institution: 'The Earnest Academy (CBSE)',
       location: 'Tirupur',
+      status: 'Completed',
       score: '85.6%',
       highlights: [
         'Strong foundation in Science and Mathematics',
@@ -30,9 +31,10 @@ const Education = () => {
     },
     {
       level: 'primary',
-      degree: 'SSLC',
+      degree: 'Secondary School',
       institution: 'The Earnest Academy (CBSE)',
       location: 'Tirupur',
+      status: 'Completed',
       score: '87.2%',
       highlights: [
         'Excellence in academics',
@@ -128,8 +130,8 @@ const Education = () => {
 
                 {/* Content */}
                 <div className="pl-2">
-                  {/* Status badge for B.Tech */}
-                  {isBachelor && (
+                  {/* Status badge */}
+                  {edu.status && (
                     <motion.div
                       initial={{ opacity: 0, x: -10 }}
                       whileInView={{ opacity: 1, x: 0 }}

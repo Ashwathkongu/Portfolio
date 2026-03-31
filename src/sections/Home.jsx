@@ -97,16 +97,21 @@ function Home() {
           {/* LEFT COLUMN: Text Content */}
           <motion.div className="space-y-8 flex flex-col justify-center relative z-10 max-w-lg">
             {/* Portfolio Label */}
-            <motion.div variants={itemVariants}>
-              <p className="text-gray-400 font-medium text-sm tracking-[0.15em] uppercase flex items-center gap-2">
-                <span>← Portfolio</span>
-              </p>
+            <motion.div variants={itemVariants} className='w-fit'>
+              <div className="border-2 border-white rounded-full px-4 py-2.5 w-fit">
+                <p className="text-gray-300 font-medium text-sm tracking-[0.15em] uppercase flex items-center gap-2">
+                  <span>← Portfolio</span>
+                </p>
+              </div>
             </motion.div>
 
             {/* Name - Large Bold */}
             <motion.div variants={itemVariants}>
               <h1 className="text-5xl sm:text-6xl lg:text-6xl font-black leading-tight text-white tracking-tight">
-                Ashwath<br />Nagarajan
+                Ashwath<br />
+              </h1>
+              <h1 className="text-5xl sm:text-6xl lg:text-6xl font-black leading-tight text-transparent bg-gradient-to-r from-brand-accent to-amber-400 bg-clip-text tracking-tight">
+                Nagarajan
               </h1>
             </motion.div>
 
@@ -191,7 +196,7 @@ function Home() {
           {/* RIGHT COLUMN: Premium Image Section */}
           <motion.div
             variants={itemVariants}
-            className="hidden lg:flex justify-center items-center relative pr-4"
+            className="flex justify-center items-center relative pr-4"
           >
             {/* Premium Background Glow Layer */}
             <motion.div

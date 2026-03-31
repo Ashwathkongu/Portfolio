@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FaTrophy, FaStar, FaMedal } from 'react-icons/fa'
+import { FaTrophy, FaStar, FaMedal, FaCertificate , FaMicrochip, FaDatabase, FaJs} from 'react-icons/fa'
 
 const Achievements = () => {
   const featuredAchievement = {
@@ -28,6 +28,27 @@ const Achievements = () => {
       icon: FaMedal,
       description: 'Recognition for outstanding performance in tech competition showcasing technical proficiency.',
       badge: 'RUNNER UP',
+    },
+  ]
+
+  const certifications = [
+    {
+      title: 'IBM Generative AI',
+      icon: FaMicrochip,
+      description: 'Professional certification in Generative AI and advanced AI applications.',
+      badge: 'CERTIFIED',
+    },
+    {
+      title: 'NASSCOM Data Processing and Visualisation',
+      icon: FaDatabase,
+      description: 'Specialized certification in data processing techniques and professional data visualization.',
+      badge: 'CERTIFIED',
+    },
+    {
+      title: 'Infosys JavaScript',
+      icon: FaJs,
+      description: 'Advanced JavaScript programming certification from Infosys.',
+      badge: 'CERTIFIED',
     },
   ]
 
@@ -73,7 +94,7 @@ const Achievements = () => {
           className="mb-16 text-center"
         >
           <h2 className="text-5xl sm:text-6xl font-black mb-6 leading-tight">
-            Achievements &<span className="bg-gradient-to-r from-brand-accent to-amber-400 bg-clip-text text-transparent"> Recognition</span>
+            Achievements &<span className="bg-gradient-to-r from-brand-accent to-amber-400 bg-clip-text text-transparent"> Certifications</span>
           </h2>
           <motion.div
             initial={{ scaleX: 0 }}
@@ -249,6 +270,101 @@ const Achievements = () => {
               </motion.div>
             )
           })}
+        </motion.div>
+
+        {/* Certifications Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ margin: '-50px' }}
+          className="mb-16"
+        >
+          <h3 className="text-3xl sm:text-4xl font-bold text-white mb-10 text-center">
+            Professional <span className="bg-gradient-to-r from-brand-accent to-amber-400 bg-clip-text text-transparent">Certifications</span>
+          </h3>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ margin: '-50px' }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          >
+            {certifications.map((cert, index) => {
+              const Icon = cert.icon
+              return (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                  className="group relative overflow-hidden rounded-xl border-2 border-white p-6 bg-transparent backdrop-blur-sm hover:bg-brand-surface-raised/40 hover:border-brand-accent transition-all duration-300"
+                >
+                  {/* Glow Backdrop */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                  {/* Top accent line on hover */}
+                  <motion.div
+                    className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-accent to-transparent"
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.3 }}
+                    style={{ transformOrigin: 'left' }}
+                  />
+
+                  {/* Background glow */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-brand-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  <div className="relative z-10">
+                    {/* Icon Container */}
+                    <motion.div
+                      initial={{ scale: 0.8, rotate: -10 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      transition={{ duration: 0.5, delay: 0.1 + index * 0.05 }}
+                      viewport={{ margin: '-50px' }}
+                      whileHover={{ rotate: 12, scale: 1.1 }}
+                      className="w-14 h-14 rounded-lg bg-transparent border border-white flex items-center justify-center mb-4 group-hover:border-brand-accent transition-colors duration-300"
+                    >
+                      <Icon className="text-2xl text-brand-accent group-hover:text-amber-300 transition-colors duration-300" />
+                    </motion.div>
+
+                    {/* Badge */}
+                    <motion.span
+                      initial={{ opacity: 0, y: -10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: 0.15 + index * 0.05 }}
+                      viewport={{ margin: '-50px' }}
+                      className="inline-block mb-3 px-3 py-1 text-xs font-semibold text-brand-accent/70 bg-brand-accent/5 rounded-full border border-brand-accent/20 group-hover:bg-brand-accent/20 group-hover:text-brand-accent transition-all duration-300"
+                    >
+                      {cert.badge}
+                    </motion.span>
+
+                    {/* Title */}
+                    <motion.h4
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ duration: 0.4, delay: 0.2 + index * 0.05 }}
+                      viewport={{ margin: '-50px' }}
+                      className="text-lg font-bold text-white mb-2 group-hover:text-brand-accent transition-colors duration-300"
+                    >
+                      {cert.title}
+                    </motion.h4>
+
+                    {/* Description */}
+                    <p className="text-sm text-gray-300 leading-relaxed">
+                      {cert.description}
+                    </p>
+
+                    {/* Subtle shine effect */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/0 to-transparent opacity-0 group-hover:opacity-10"
+                      animate={{ x: ['-100%', '100%'] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    />
+                  </div>
+                </motion.div>
+              )
+            })}
+          </motion.div>
         </motion.div>
 
         {/* Credibility Stats */}

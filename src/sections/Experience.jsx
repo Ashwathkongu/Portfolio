@@ -111,8 +111,8 @@ const Experience = () => {
               >
                 {/* Timeline Line and Marker */}
                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-brand-accent via-brand-accent/50 to-transparent ml-7" />
-                <div className={`absolute left-0 top-8 w-16 h-16 rounded-full bg-gradient-to-br ${exp.accentColor} flex items-center justify-center border-4 border-brand-bg-primary shadow-lg`}>
-                  <IconComponent className="text-2xl text-white" />
+                <div className={`absolute left-0 top-8 w-16 h-16 rounded-full bg-transparent border-2 border-white flex items-center justify-center hover:bg-brand-surface-raised/40 hover:border-brand-accent transition-all duration-300 group`}>
+                  <IconComponent className={`text-2xl text-white group-hover:text-brand-accent transition-colors duration-300`} />
                 </div>
 
                 {/* Content Card */}
