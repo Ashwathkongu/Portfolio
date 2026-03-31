@@ -1,115 +1,155 @@
-import { useState, useEffect, useRef } from 'react';
+import React from 'react'
+import { motion } from 'framer-motion'
+import { FiCpu, FiCode, FiTarget, FiAward } from 'react-icons/fi'
 
-export default function About() {
-    const [isVisible, setIsVisible] = useState(false);
-    const sectionRef = useRef(null);
+function About() {
+  const highlights = [
+    {
+      icon: FiCpu,
+      title: 'AI/ML Engineering',
+      description:
+        'Developing intelligent systems with advanced machine learning, NLP, and computer vision technologies.',
+    },
+    {
+      icon: FiCode,
+      title: 'Full Stack Development',
+      description:
+        'Creating scalable web applications with React, Python, and modern backend frameworks.',
+    },
+    {
+      icon: FiTarget,
+      title: 'Problem Solving',
+      description:
+        'Tackling complex challenges with creative solutions and data-driven decision making.',
+    },
+    {
+      icon: FiAward,
+      title: 'Innovation & Impact',
+      description:
+        'Delivering high-quality projects that create measurable value and drive positive change.',
+    },
+  ]
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                setIsVisible(entry.isIntersecting);
-            },
-            {
-                threshold: 0.2, // Trigger when 20% of section is visible
-            }
-        );
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  }
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: 'easeOut' },
+    },
+  }
 
-        return () => {
-            observer.disconnect();
-        };
-    }, []);
+  return (
+    <section
+      id="about"
+      className="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8 flex items-center bg-transparent text-white -mb-px overflow-hidden"
+    >
+      {/* Section transition gradient overlay */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white/[0.01] via-white/[0.005] to-transparent pointer-events-none" />
+      {/* Background gradient glow */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 -right-40 w-96 h-96 bg-gradient-to-bl from-brand-accent/10 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-brand-accent/5 to-transparent rounded-full blur-3xl" />
+      </div>
 
-    return (
-        <section id="about" className="py-24 bg-black w-full" ref={sectionRef}>
-            <div className={`max-w-7xl mx-auto px-6 md:px-12 w-full transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <div className="max-w-7xl w-full mx-auto relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          viewport={{ margin: '-50px' }}
+          className="mb-20 text-center"
+        >
+          <h2 className="text-5xl sm:text-6xl font-black mb-6 leading-tight">
+            About <span className="bg-gradient-to-r from-brand-accent to-amber-400 bg-clip-text text-transparent">Me</span>
+          </h2>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ margin: '-50px' }}
+            className="w-24 h-1.5 bg-gradient-to-r from-brand-accent to-amber-400 rounded-full mx-auto mb-6"
+            style={{ transformOrigin: 'center' }}
+          />
+        </motion.div>
 
-                {/* Premium Dark Card Container */}
-                <div className="bg-black rounded-[2rem] md:rounded-[3rem] border border-green-500 shadow-2xl p-8 md:p-14 lg:p-20 relative overflow-hidden group">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
+              I'm a passionate <span className="text-yellow-400 font-semibold">AI engineer and full-stack developer</span> dedicated to creating intelligent solutions that solve real-world problems and drive innovation.
+            </p>
 
-                    {/* Background blob/glow inside the card */}
-                    <div className="absolute top-0 right-0 -mx-20 -my-20 w-[400px] h-[400px] bg-gradient-to-br from-green-500/15 via-green-400/8 to-transparent rounded-full blur-[120px] opacity-80 pointer-events-none animate-pulse"></div>
-                    <div className="absolute bottom-0 left-0 -mx-32 -my-32 w-[500px] h-[500px] bg-gradient-to-tr from-green-600/10 via-transparent to-green-500/5 rounded-full blur-[140px] opacity-60 pointer-events-none"></div>
+            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
+              My expertise spans <span className="text-yellow-400 font-semibold">machine learning, NLP, web development, and system design</span>, with a proven track record of delivering production-grade applications and scalable architectures.
+            </p>
 
-                    <div className="flex flex-col-reverse lg:flex-row items-center gap-16 lg:gap-24 relative z-10">
+            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
+              I'm committed to continuous learning, collaboration, and using technology as a tool to create meaningful digital experiences and contribute to collaborative teams.
+            </p>
+          </motion.div>
 
-                        {/* Left Side - Content */}
-                        <div className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left">
-                            <h3 className="text-green-400 font-bold uppercase tracking-widest text-sm mb-4 flex items-center justify-center lg:justify-start gap-3">
-                                <span className="w-8 h-px bg-green-400"></span>
-                                About Me
-                            </h3>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ margin: '-50px' }}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+          >
+            {highlights.map((highlight, index) => {
+              const Icon = highlight.icon
 
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-6 leading-tight">
-                                Are you looking for innovative AI solutions? Let me help you.
-                            </h2>
+              return (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                  className="group relative p-6 rounded-2xl bg-transparent border-2 border-white hover:bg-brand-surface-raised/40 hover:border-brand-accent transition-all duration-300 backdrop-blur-sm overflow-hidden"
+                >
+                  {/* Hover glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-brand-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                            <p className="text-lg text-green-200 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                                I am an Artificial Intelligence and Data Science student specializing in building lightweight, scalable applications optimized for low-resource environments. I turn complex problems into intelligent, accessible software.
-                            </p>
+                  <div className="relative z-10">
+                    <motion.div
+                      whileHover={{ rotate: 10, scale: 1.1 }}
+                      transition={{ duration: 0.3 }}
+                      className="mb-4 inline-flex p-3 rounded-xl bg-gradient-to-br from-brand-accent/20 to-amber-400/10 border border-white/20 group-hover:border-brand-accent/80 text-brand-accent transition-all duration-300"
+                    >
+                      <Icon size={24} />
+                    </motion.div>
 
-                            {/* Bullet Points */}
-                            <ul className="space-y-4 mb-10 text-green-100 text-left mx-auto lg:mx-0 max-w-md">
-                                <li className="flex items-start gap-3">
-                                    <svg className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                                    <span>Developing offline AI tools & gamified learning systems</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <svg className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                                    <span>Strong foundation in AI, Python, and C</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <svg className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                                    <span>Performance-driven backend architecture and algorithms</span>
-                                </li>
-                            </ul>
+                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-brand-accent transition-colors duration-300">
+                      {highlight.title}
+                    </h3>
 
-                            {/* CTA Button */}
-                            <div className="flex justify-center lg:justify-start">
-                                <a href="#contact" className="inline-block px-8 py-4 rounded-full bg-green-500 text-black font-bold text-lg hover:bg-green-400 hover:scale-105 hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-all duration-300 transform focus-ring">
-                                    Let's Work Together
-                                </a>
-                            </div>
-                        </div>
-
-                        {/* Right Side - Image Area */}
-                        <div className="w-full lg:w-1/2 relative flex justify-center items-center mt-8 lg:mt-0">
-                            {/* Abstract Blob Shape Background */}
-                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                <div className="w-[300px] h-[350px] md:w-[400px] md:h-[450px] bg-gradient-to-br from-green-600/40 via-green-700/20 to-black/10 blur-[100px] rounded-full opacity-75 animate-pulse will-change-filter"></div>
-                            </div>
-
-                            {/* Main Image Container */}
-                            <div className="relative w-full max-w-[340px] md:max-w-[400px] aspect-[4/5] rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] group-hover:scale-[1.03] transition-transform duration-700 bg-black border border-green-500 flex items-center justify-center">
-                                {/* If portrait.png exists, this img tag will show it, otherwise the alt displays. Using an SVG abstract placeholder visually fits nicely if no portrait exists. */}
-                                <img src="/portrait.png" alt="Ashwath Nagarajan" className="w-full h-full object-cover relative z-10" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }} />
-                                <div className="absolute inset-0 flex items-center justify-center text-green-500/20 hidden z-0">
-                                    <svg className="w-32 h-32 opacity-20" fill="none" stroke="currentColor" strokeWidth="1" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                                    </svg>
-                                </div>
-                            </div>
-
-                            {/* Floating Badge */}
-                            <div
-                                className="absolute -bottom-8 -left-4 md:-left-10 bg-black border border-green-500 px-5 py-4 rounded-xl shadow-[0_10px_40px_rgba(34,197,94,0.15)] flex items-center gap-4 z-20 animate-float-smooth"
-                            >
-                                <div className="w-12 h-12 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center font-black text-xl">
-                                    1+
-                                </div>
-                                <div>
-                                    <p className="text-white font-bold text-sm leading-tight">Years of<br />Experience</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            {/* Inject small keyframes right here since it's now in index.css */}
-        </section>
-    );
+                    <p className="text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+                      {highlight.description}
+                    </p>
+                  </div>
+                </motion.div>
+              )
+            })}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  )
 }
+
+export default About

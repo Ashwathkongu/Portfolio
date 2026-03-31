@@ -1,113 +1,634 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
-  }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    @apply bg-black text-white;
-  }
+/* ============================================================================
+   BASE STYLES
+   ============================================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@layer utilities {
-  .focus-ring {
-    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black;
-  }
-
-  /* Smooth Gradient Animations */
-  .animate-gradient-shift {
-    background-size: 400% 400%;
-    animation: gradientShift 12s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
-  }
-
-  /* Premium Glow Effect */
-  .glow-effect {
-    will-change: filter;
-  }
-
-  /* Smooth Transforms */
-  .transition-smooth {
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
-    transition-duration: 400ms;
-  }
-
-  .transition-smooth-lg {
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
-    transition-duration: 600ms;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #0f172a;
+  color: #e2e8f0;
+  overflow-x: hidden;
+  position: relative;
 }
 
-@keyframes orbitSpin {
+/* ============================================================================
+   PREMIUM BACKGROUND EFFECTS
+   ============================================================================ */
+
+/* Background gradient base */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    #0f172a 0%,
+    #1a2847 25%,
+    #0f172a 50%,
+    #1a1f35 75%,
+    #0f172a 100%
+  );
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* Premium glow spots - Top left */
+body::after {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at 20% 30%,
+    rgba(251, 191, 36, 0.08) 0%,
+    rgba(251, 191, 36, 0.04) 15%,
+    transparent 50%
+  );
+  pointer-events: none;
+  z-index: -1;
+  animation: glow-shift 20s ease-in-out infinite;
+}
+
+/* Additional decorative glow elements */
+html::before {
+  content: '';
+  position: fixed;
+  bottom: -30%;
+  right: -30%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(
+    circle,
+    rgba(30, 58, 82, 0.3) 0%,
+    rgba(30, 58, 82, 0.1) 30%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: -1;
+  animation: glow-shift-reverse 25s ease-in-out infinite;
+}
+
+html::after {
+  content: '';
+  position: fixed;
+  top: -20%;
+  right: 10%;
+  width: 40%;
+  height: 40%;
+  background: radial-gradient(
+    circle,
+    rgba(251, 191, 36, 0.04) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ============================================================================
+   ANIMATIONS
+   ============================================================================ */
+
+@keyframes fadeInUp {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(30px);
   }
   to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes orbitCounterSpin {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes smoothPulse {
-  0%, 100% {
     opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glow-shift {
+  0%, 100% {
+    transform: translate(0, 0);
   }
   50% {
-    opacity: 0.8;
+    transform: translate(30px, -30px);
   }
 }
 
-@keyframes floatSmooth {
-  0% {
-    transform: translateY(0px);
+@keyframes glow-shift-reverse {
+  0%, 100% {
+    transform: translate(0, 0);
   }
   50% {
-    transform: translateY(-8px);
-  }
-  100% {
-    transform: translateY(0px);
+    transform: translate(-40px, 40px);
   }
 }
 
-.animate-orbit {
-  animation: orbitSpin 45s linear infinite;
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(251, 191, 36, 0.6);
+  }
 }
 
-.animate-orbit-counter {
-  animation: orbitCounterSpin 45s linear infinite;
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
 }
 
-.animate-orbit-slow {
-  animation: orbitSpin 60s linear infinite reverse;
+.animate-fade-in-down {
+  animation: fadeInDown 0.6s ease-out;
 }
 
-.animate-float-smooth {
-  animation: floatSmooth 4s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ============================================================================
+   CUSTOM SCROLLBAR
+   ============================================================================ */
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(30, 41, 59, 0.6);
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #fbbf24 0%, #f59e0b 100%);
+  border-radius: 10px;
+  border: 3px solid rgba(30, 41, 59, 0.6);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #fde047 0%, #fbbf24 100%);
+}
+
+/* Firefox */
+* {
+  scrollbar-color: #fbbf24 rgba(30, 41, 59, 0.6);
+  scrollbar-width: thin;
+}
+
+/* ============================================================================
+   TYPOGRAPHY
+   ============================================================================ */
+
+@layer components {
+  /* Headings */
+  h1 {
+    @apply text-6xl font-extrabold tracking-tight text-white;
+  }
+
+  h2 {
+    @apply text-4xl font-bold tracking-tight text-white;
+  }
+
+  h3 {
+    @apply text-2xl font-semibold text-white;
+  }
+
+  h4 {
+    @apply text-lg font-semibold text-white;
+  }
+
+  h5 {
+    @apply text-base font-semibold text-white;
+  }
+
+  h6 {
+    @apply text-sm font-semibold uppercase tracking-wide;
+    color: #94a3b8;
+  }
+
+  p {
+    @apply text-base leading-relaxed;
+    color: #e2e8f0;
+  }
+
+  a {
+    @apply transition-colors duration-300;
+  }
+
+  /* ============================================================================
+     LAYOUT UTILITIES
+     ============================================================================ */
+
+  .container-page {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-max {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-lg {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-md {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-wrapper {
+    @apply relative py-20 sm:py-24 lg:py-32 overflow-hidden;
+  }
+
+  .section-padding {
+    @apply py-20 sm:py-24 lg:py-32;
+  }
+
+  .section-padding-sm {
+    @apply py-12 sm:py-16 lg:py-20;
+  }
+
+  .section-bg-dark {
+    @apply bg-brand-bg-primary;
+  }
+
+  .section-bg-darker {
+    @apply bg-brand-bg-tertiary;
+  }
+
+  .section-bg-elevated {
+    @apply bg-brand-surface-raised;
+  }
+
+  /* ============================================================================
+     TYPOGRAPHY COMPONENTS
+     ============================================================================ */
+
+  .section-title {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 text-white;
+  }
+
+  .section-title-lg {
+    @apply text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-8 text-white tracking-tight;
+  }
+
+  .section-title-sm {
+    @apply text-3xl sm:text-4xl font-bold mb-4 text-white;
+  }
+
+  .section-subtitle {
+    @apply text-lg sm:text-xl leading-relaxed;
+    color: #94a3b8;
+  }
+
+  .section-subtitle-lg {
+    @apply text-xl sm:text-2xl leading-relaxed max-w-3xl;
+    color: #e2e8f0;
+  }
+
+  .section-accent-line {
+    @apply w-14 h-1.5 bg-gradient-to-r from-brand-accent to-brand-accent-light rounded-full;
+  }
+
+  /* ============================================================================
+     BUTTON STYLES
+     ============================================================================ */
+
+  .btn-base {
+    @apply inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply btn-base px-8 py-3 bg-brand-accent text-black hover:bg-brand-accent-hover hover:shadow-glow-lg hover:scale-105 active:scale-95;
+  }
+
+  .btn-primary-lg {
+    @apply btn-base px-10 py-4 text-lg bg-brand-accent text-black hover:bg-brand-accent-hover hover:shadow-glow-lg hover:scale-105 active:scale-95;
+  }
+
+  .btn-primary-sm {
+    @apply btn-base px-6 py-2 text-sm bg-brand-accent text-black hover:bg-brand-accent-hover active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply btn-base px-8 py-3 border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-black hover:shadow-glow transition-all;
+  }
+
+  .btn-secondary-lg {
+    @apply btn-base px-10 py-4 text-lg border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-black transition-all;
+  }
+
+  .btn-secondary-sm {
+    @apply btn-base px-6 py-2 text-sm border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-black;
+  }
+
+  .btn-ghost {
+    @apply btn-base px-6 py-3 bg-transparent;
+    color: #e2e8f0;
+  }
+  .btn-ghost:hover {
+    @apply text-brand-accent;
+    background-color: #1e3a52;
+  }
+
+  .btn-ghost-lg {
+    @apply btn-base px-8 py-4 text-lg bg-transparent;
+    color: #e2e8f0;
+  }
+  .btn-ghost-lg:hover {
+    @apply text-brand-accent;
+    background-color: #1e3a52;
+  }
+
+  .btn-ghost-sm {
+    @apply btn-base px-4 py-2 text-sm bg-transparent;
+    color: #e2e8f0;
+  }
+  .btn-ghost-sm:hover {
+    @apply text-brand-accent;
+  }
+
+  .btn-group {
+    @apply flex flex-wrap gap-4 items-center;
+  }
+
+  /* ============================================================================
+     TEXT STYLES
+     ============================================================================ */
+
+  .text-accent {
+    @apply text-brand-accent;
+  }
+
+  .text-accent-hover {
+    @apply hover:text-brand-accent transition-colors;
+  }
+
+  .text-muted {
+    color: #94a3b8;
+  }
+
+  .text-faded {
+    color: #64748b;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-accent to-brand-accent-light bg-clip-text text-transparent;
+  }
+
+  .text-gradient-lg {
+    @apply text-2xl sm:text-3xl font-bold bg-gradient-to-r from-brand-accent to-brand-accent-light bg-clip-text text-transparent;
+  }
+
+  /* ============================================================================
+     CARD & SURFACE STYLES
+     ============================================================================ */
+
+  .card-base {
+    @apply relative bg-brand-surface-raised border border-brand-border rounded-xl transition-all duration-300;
+  }
+
+  .card {
+    @apply card-base p-6 hover:border-brand-accent/50 hover:shadow-card;
+  }
+
+  .card-lg {
+    @apply card-base p-8 hover:border-brand-accent/50 hover:shadow-card-lg;
+  }
+
+  .card-elevated {
+    @apply card-base p-6 bg-gradient-to-br from-brand-surface-raised to-brand-bg-secondary border border-brand-accent/20 hover:border-brand-accent/40 shadow-card;
+  }
+
+  .card-glass {
+    @apply card-base p-6 bg-white/5 backdrop-blur-md border border-white/10 hover:border-brand-accent/30;
+  }
+
+  .card-accent {
+    @apply card-base p-6 bg-brand-accent/5 border-2 border-brand-accent/30 hover:border-brand-accent/60 hover:bg-brand-accent/10;
+  }
+
+  /* ============================================================================
+     BORDER & DIVIDER STYLES
+     ============================================================================ */
+
+  .border-accent {
+    @apply border-brand-accent;
+  }
+
+  .border-accent-light {
+    @apply border-brand-accent/30;
+  }
+
+  .divider {
+    @apply h-px bg-gradient-to-r from-transparent via-brand-border to-transparent;
+  }
+
+  .divider-accent {
+    @apply h-px bg-gradient-to-r from-transparent via-brand-accent/30 to-transparent;
+  }
+
+  /* ============================================================================
+     GLOW & EFFECTS
+     ============================================================================ */
+
+  .glow-accent {
+    @apply shadow-glow;
+  }
+
+  .glow-accent-lg {
+    @apply shadow-glow-lg;
+  }
+
+  .glow-accent-xl {
+    @apply shadow-glow-xl;
+  }
+
+  .glow-inner {
+    @apply shadow-inner-glow;
+  }
+
+  .glow-animated {
+    @apply animate-pulse-glow;
+  }
+
+  .focus-ring {
+    @apply outline-none ring-2 ring-brand-accent ring-offset-2 ring-offset-brand-bg-primary;
+  }
+
+  /* ============================================================================
+     UTILITY CLASSES
+     ============================================================================ */
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  .flex-col-center {
+    @apply flex flex-col items-center justify-center;
+  }
+
+  .abs-center {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  }
+
+  .abs-center-x {
+    @apply absolute left-1/2 -translate-x-1/2;
+  }
+
+  .abs-center-y {
+    @apply absolute top-1/2 -translate-y-1/2;
+  }
+
+  .blur-bg {
+    @apply backdrop-blur-md bg-white/5;
+  }
+
+  /* ============================================================================
+     NAVIGATION STYLES
+     ============================================================================ */
+
+  .nav-link {
+    @apply transition-colors duration-300 font-medium text-sm;
+    color: #94a3b8;
+  }
+  .nav-link:hover {
+    @apply text-brand-accent;
+  }
+
+  .nav-link-active {
+    @apply text-brand-accent font-semibold;
+  }
+
+  /* ============================================================================
+     TRANSITIONS & ANIMATIONS
+     ============================================================================ */
+
+  .transition-smooth {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .transition-fast {
+    @apply transition-all duration-150 ease-in;
+  }
+
+  .transition-slow {
+    @apply transition-all duration-500 ease-in-out;
+  }
+
+  .hover-lift {
+    @apply hover:-translate-y-2 transition-transform duration-300;
+  }
+
+  .hover-scale {
+    @apply hover:scale-105 transition-transform duration-300;
+  }
+
+  .hover-glow {
+    @apply hover:shadow-glow-lg transition-shadow duration-300;
+  }
+
+  /* ============================================================================
+     RESPONSIVE UTILITIES
+     ============================================================================ */
+
+  .hidden-mobile {
+    @apply hidden md:block;
+  }
+
+  .hidden-desktop {
+    @apply md:hidden;
+  }
+
+  .grid-auto-fit {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+
+  .grid-auto-fit-sm {
+    @apply grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4;
+  }
+
+  .grid-auto-fit-lg {
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-8;
+  }
+}
+
+/* ============================================================================
+   UTILITY ANIMATIONS
+   ============================================================================ */
+
+.animate-entrance {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-entrance-delay-1 {
+  animation: fadeInUp 0.6s ease-out 0.1s both;
+}
+
+.animate-entrance-delay-2 {
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+.animate-entrance-delay-3 {
+  animation: fadeInUp 0.6s ease-out 0.3s both;
+}
+
+.animate-entrance-delay-4 {
+  animation: fadeInUp 0.6s ease-out 0.4s both;
 }

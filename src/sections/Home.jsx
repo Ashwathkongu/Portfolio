@@ -1,125 +1,319 @@
-export default function Home() {
-    return (
-        <section id="home" className="relative min-h-screen w-full overflow-hidden bg-black">
+import React from 'react'
+import { motion } from 'framer-motion'
+import { FiArrowRight, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
+import Button from '../components/Button'
 
-            {/* Background Gradient */}
-            {/* Black with green gradient overlay */}
-            <div
-                className="absolute inset-0 w-full h-full bg-gradient-to-br from-black via-black to-green-950/20 z-0"
-            ></div>
+/**
+ * Home/Hero Section
+ * Premium hero section with two-column layout
+ * Left: text content with greeting, name, role, tagline, CTA buttons, social links
+ * Right: stylized image card with glow effects
+ */
+function Home() {
+  // Container animation - staggered children
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.2,
+      },
+    },
+  }
 
-            <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full h-screen flex flex-col md:flex-row items-center justify-between pointer-events-none">
+  // Individual item animation
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: 'easeOut' },
+    },
+  }
 
-                {/* Left Content */}
-                <div className="w-full md:w-1/2 flex flex-col justify-center pointer-events-auto h-full pt-24 md:pt-0">
-                    <p className="text-2xl md:text-3xl font-semibold text-green-300 mb-2">Hi, I am</p>
-                    <h1 className="text-6xl sm:text-7xl lg:text-[5.5rem] font-extrabold text-white tracking-tight leading-none mb-4 drop-shadow-lg">Ashwath Nagarajan</h1>
-                    <p className="text-xl md:text-2xl font-bold text-green-400 mb-4">
-                        Aspiring AI/ML & Full Stack Developer
-                    </p>
-                    <p className="text-lg md:text-xl font-medium text-green-200 mb-10 max-w-lg">
-                        Building scalable AI systems and lightweight applications optimized for real-world constraints.
-                    </p>
+  // Social links data
+  const socialLinks = [
+    {
+      icon: FiGithub,
+      href: 'https://github.com/AshwathNagarajan',
+      label: 'GitHub',
+    },
+    {
+      icon: FiLinkedin,
+      href: 'https://linkedin.com/in/ashwathnagarajan',
+      label: 'LinkedIn',
+    },
+    {
+      icon: FiMail,
+      href: 'mailto:ashwathnagarajan14@gmail.com',
+      label: 'Email',
+    },
+  ]
 
-                    {/* Social Links */}
-                    <div className="flex gap-4 items-center">
-                        <a href="#" className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-green-600 to-green-500 rounded shadow-lg hover:shadow-[0_8px_16px_rgba(34,197,94,0.5)] hover:-translate-y-1.5 focus-ring transition-smooth will-change-transform group" aria-label="Email">
-                            <span className="font-bold text-2xl text-black group-hover:text-white transition-smooth">@</span>
-                        </a>
-                        <a href="https://github.com/AshwathNagarajan" className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-green-600 to-green-500 rounded shadow-lg hover:shadow-[0_8px_16px_rgba(34,197,94,0.5)] hover:-translate-y-1.5 focus-ring transition-smooth will-change-transform group" aria-label="GitHub">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="text-black group-hover:text-white transition-smooth"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
-                        </a>
-                        <a href="https://linkedin.com/in/ashwath-nagarajan-ad31" className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-green-600 to-green-500 rounded shadow-lg hover:shadow-[0_8px_16px_rgba(34,197,94,0.5)] hover:-translate-y-1.5 focus-ring transition-smooth will-change-transform group" aria-label="LinkedIn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="text-black group-hover:text-white transition-smooth"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
-                        </a>
-                    </div>
-                </div>
+  return (
+    <section
+      id="home"
+      className="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8 flex items-center justify-center overflow-hidden -mb-px"
+    >
+      
+      {/* Animated background light effects */}
+      <motion.div
+        animate={{
+          opacity: [0.4, 0.8, 0.4],
+          scale: [1, 1.1, 1],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+        className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-brand-accent/15 via-transparent to-transparent rounded-full blur-3xl pointer-events-none -z-10"
+      />
+      
+      <motion.div
+        animate={{
+          opacity: [0.2, 0.5, 0.2],
+          scale: [1, 0.9, 1],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+        className="absolute bottom-1/3 -left-1/4 w-[500px] h-[500px] bg-gradient-to-tr from-blue-600/10 via-transparent to-transparent rounded-full blur-3xl pointer-events-none -z-10"
+      />
 
-                {/* Right Content - Hacker Illustration */}
-                <div className="w-full md:w-1/2 flex justify-center md:items-end h-full relative pointer-events-auto">
-                    {/* AI Neural Network Illustration */}
-                    <div className="relative w-full h-full flex items-center justify-center md:justify-end pb-0 md:pb-20">
-                        <svg className="w-[300px] h-[400px] md:w-[380px] md:h-[480px] text-green-500 drop-shadow-[0_0_30px_rgba(34,197,94,0.8)]" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeWidth="1.5">
-                            <defs>
-                                <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
-                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                                    <feMerge>
-                                        <feMergeNode in="coloredBlur"/>
-                                        <feMergeNode in="SourceGraphic"/>
-                                    </feMerge>
-                                </filter>
-                                <radialGradient id="nodeGradient" cx="50%" cy="50%" r="50%">
-                                    <stop offset="0%" stopColor="currentColor" stopOpacity="0.8"/>
-                                    <stop offset="100%" stopColor="currentColor" stopOpacity="0.2"/>
-                                </radialGradient>
-                            </defs>
+      {/* Section transition overlay */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0a0f1c] via-[#0a0f1c]/60 to-transparent pointer-events-none -z-10" />
 
-                            {/* Input Layer */}
-                            <circle cx="60" cy="100" r="10" fill="url(#nodeGradient)" filter="url(#neonGlow)"/>
-                            <circle cx="60" cy="180" r="10" fill="url(#nodeGradient)" filter="url(#neonGlow)"/>
-                            <circle cx="60" cy="260" r="10" fill="url(#nodeGradient)" filter="url(#neonGlow)"/>
-                            <circle cx="60" cy="340" r="10" fill="url(#nodeGradient)" filter="url(#neonGlow)"/>
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-1 lg:grid-cols-[1fr_0.95fr] gap-12 lg:gap-20 items-center w-full relative">
+        
+          {/* LEFT COLUMN: Text Content */}
+          <motion.div className="space-y-8 flex flex-col justify-center relative z-10 max-w-lg">
+            {/* Portfolio Label */}
+            <motion.div variants={itemVariants}>
+              <p className="text-gray-400 font-medium text-sm tracking-[0.15em] uppercase flex items-center gap-2">
+                <span>← Portfolio</span>
+              </p>
+            </motion.div>
 
-                            {/* Hidden Layer 1 */}
-                            <circle cx="150" cy="70" r="12" fill="url(#nodeGradient)" filter="url(#neonGlow)"/>
-                            <circle cx="150" cy="150" r="12" fill="url(#nodeGradient)" filter="url(#neonGlow)"/>
-                            <circle cx="150" cy="230" r="12" fill="url(#nodeGradient)" filter="url(#neonGlow)"/>
-                            <circle cx="150" cy="310" r="12" fill="url(#nodeGradient)" filter="url(#neonGlow)"/>
-                            <circle cx="150" cy="390" r="12" fill="url(#nodeGradient)" filter="url(#neonGlow)"/>
+            {/* Name - Large Bold */}
+            <motion.div variants={itemVariants}>
+              <h1 className="text-5xl sm:text-6xl lg:text-6xl font-black leading-tight text-white tracking-tight">
+                Ashwath<br />Nagarajan
+              </h1>
+            </motion.div>
 
-                            {/* Hidden Layer 2 */}
-                            <circle cx="250" cy="100" r="12" fill="url(#nodeGradient)" filter="url(#neonGlow)"/>
-                            <circle cx="250" cy="200" r="12" fill="url(#nodeGradient)" filter="url(#neonGlow)"/>
-                            <circle cx="250" cy="300" r="12" fill="url(#nodeGradient)" filter="url(#neonGlow)"/>
-                            <circle cx="250" cy="400" r="12" fill="url(#nodeGradient)" filter="url(#neonGlow)"/>
+            {/* Role Badge */}
+            <motion.div variants={itemVariants}>
+              <div className="inline-block px-4 py-2 border-2 border-gray-500 rounded text-gray-300 font-medium text-sm uppercase tracking-widest hover:border-brand-accent hover:text-brand-accent transition-colors duration-300">
+                AI/ML Engineer
+              </div>
+            </motion.div>
 
-                            {/* Output Layer */}
-                            <circle cx="340" cy="150" r="10" fill="url(#nodeGradient)" filter="url(#neonGlow)"/>
-                            <circle cx="340" cy="250" r="10" fill="url(#nodeGradient)" filter="url(#neonGlow)"/>
-                            <circle cx="340" cy="350" r="10" fill="url(#nodeGradient)" filter="url(#neonGlow)"/>
+            {/* Tagline */}
+            <motion.p
+              variants={itemVariants}
+              className="text-base sm:text-lg text-gray-400 leading-relaxed max-w-xl font-light"
+            >
+              Building intelligent systems and scalable solutions that solve real-world problems.
+            </motion.p>
 
-                            {/* Connections - Input to Hidden 1 */}
-                            <line x1="70" y1="100" x2="138" y2="70" stroke="currentColor" strokeWidth="0.8" opacity="0.4" filter="url(#neonGlow)"/>
-                            <line x1="70" y1="100" x2="138" y2="150" stroke="currentColor" strokeWidth="0.8" opacity="0.4" filter="url(#neonGlow)"/>
-                            <line x1="70" y1="180" x2="138" y2="150" stroke="currentColor" strokeWidth="0.8" opacity="0.4" filter="url(#neonGlow)"/>
-                            <line x1="70" y1="180" x2="138" y2="230" stroke="currentColor" strokeWidth="0.8" opacity="0.4" filter="url(#neonGlow)"/>
-                            <line x1="70" y1="260" x2="138" y2="230" stroke="currentColor" strokeWidth="0.8" opacity="0.4" filter="url(#neonGlow)"/>
-                            <line x1="70" y1="260" x2="138" y2="310" stroke="currentColor" strokeWidth="0.8" opacity="0.4" filter="url(#neonGlow)"/>
-                            <line x1="70" y1="340" x2="138" y2="310" stroke="currentColor" strokeWidth="0.8" opacity="0.4" filter="url(#neonGlow)"/>
-                            <line x1="70" y1="340" x2="138" y2="390" stroke="currentColor" strokeWidth="0.8" opacity="0.4" filter="url(#neonGlow)"/>
+            {/* CTA Buttons */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap gap-4 pt-2"
+            >
+              <Button
+                variant="primary"
+                size="lg"
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                icon={FiArrowRight}
+                iconPosition="right"
+              >
+                View My Work
+              </Button>
+              <Button
+                variant="secondary"
+                size="lg"
+                onClick={() => {
+                  const link = document.createElement('a')
+                  link.href = '/AshwathNagarajan.pdf'
+                  link.download = 'AshwathNagarajan_Resume.pdf'
+                  document.body.appendChild(link)
+                  link.click()
+                  document.body.removeChild(link)
+                }}
+              >
+                Download CV
+              </Button>
+            </motion.div>
 
-                            {/* Connections - Hidden 1 to Hidden 2 */}
-                            <line x1="162" y1="70" x2="238" y2="100" stroke="currentColor" strokeWidth="0.8" opacity="0.5" filter="url(#neonGlow)"/>
-                            <line x1="162" y1="150" x2="238" y2="100" stroke="currentColor" strokeWidth="0.8" opacity="0.5" filter="url(#neonGlow)"/>
-                            <line x1="162" y1="150" x2="238" y2="200" stroke="currentColor" strokeWidth="0.8" opacity="0.5" filter="url(#neonGlow)"/>
-                            <line x1="162" y1="230" x2="238" y2="200" stroke="currentColor" strokeWidth="0.8" opacity="0.5" filter="url(#neonGlow)"/>
-                            <line x1="162" y1="230" x2="238" y2="300" stroke="currentColor" strokeWidth="0.8" opacity="0.5" filter="url(#neonGlow)"/>
-                            <line x1="162" y1="310" x2="238" y2="300" stroke="currentColor" strokeWidth="0.8" opacity="0.5" filter="url(#neonGlow)"/>
-                            <line x1="162" y1="310" x2="238" y2="400" stroke="currentColor" strokeWidth="0.8" opacity="0.5" filter="url(#neonGlow)"/>
-                            <line x1="162" y1="390" x2="238" y2="400" stroke="currentColor" strokeWidth="0.8" opacity="0.5" filter="url(#neonGlow)"/>
+            {/* Social Links */}
+            <motion.div
+              variants={itemVariants}
+              className="flex items-center gap-4 pt-6"
+            >
+              <p className="text-gray-400 font-medium text-sm uppercase tracking-widest">Connect:</p>
+              {socialLinks.map((social, index) => {
+                const Icon = social.icon
+                return (
+                  <motion.a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.7 + index * 0.1, duration: 0.5 }}
+                    whileHover={{
+                      scale: 1.2,
+                      y: -2,
+                      transition: { duration: 0.3 }
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-11 h-11 rounded-lg border-2 border-gray-600 flex items-center justify-center text-gray-400 hover:text-brand-accent hover:border-brand-accent transition-all duration-300"
+                    aria-label={social.label}
+                  >
+                    <Icon size={20} />
+                  </motion.a>
+                )
+              })}
+            </motion.div>
+          </motion.div>
 
-                            {/* Connections - Hidden 2 to Output */}
-                            <line x1="262" y1="100" x2="330" y2="150" stroke="currentColor" strokeWidth="0.8" opacity="0.6" filter="url(#neonGlow)"/>
-                            <line x1="262" y1="200" x2="330" y2="150" stroke="currentColor" strokeWidth="0.8" opacity="0.6" filter="url(#neonGlow)"/>
-                            <line x1="262" y1="200" x2="330" y2="250" stroke="currentColor" strokeWidth="0.8" opacity="0.6" filter="url(#neonGlow)"/>
-                            <line x1="262" y1="300" x2="330" y2="250" stroke="currentColor" strokeWidth="0.8" opacity="0.6" filter="url(#neonGlow)"/>
-                            <line x1="262" y1="300" x2="330" y2="350" stroke="currentColor" strokeWidth="0.8" opacity="0.6" filter="url(#neonGlow)"/>
-                            <line x1="262" y1="400" x2="330" y2="350" stroke="currentColor" strokeWidth="0.8" opacity="0.6" filter="url(#neonGlow)"/>
+          {/* RIGHT COLUMN: Premium Image Section */}
+          <motion.div
+            variants={itemVariants}
+            className="hidden lg:flex justify-center items-center relative pr-4"
+          >
+            {/* Premium Background Glow Layer */}
+            <motion.div
+              animate={{
+                opacity: [0.5, 0.8, 0.5],
+                scale: [1, 1.05, 1],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+              className="absolute inset-0 bg-radial-gradient rounded-full blur-3xl pointer-events-none -z-5"
+              style={{
+                background: 'radial-gradient(circle, rgba(251, 191, 36, 0.2) 0%, rgba(251, 191, 36, 0.05) 30%, transparent 70%)',
+              }}
+            />
 
-                            {/* AI Brain-like Core in center */}
-                            <circle cx="200" cy="250" r="35" fill="none" stroke="currentColor" strokeWidth="1.5" opacity="0.3" filter="url(#neonGlow)"/>
-                            <circle cx="200" cy="250" r="25" fill="none" stroke="currentColor" strokeWidth="1.5" opacity="0.5" filter="url(#neonGlow)"/>
-                            <circle cx="200" cy="250" r="15" fill="url(#nodeGradient)" strokeWidth="1" filter="url(#neonGlow)"/>
+            {/* Image Container with Premium Effects */}
+            <motion.div
+              className="relative flex items-center justify-center w-72 aspect-[3/4]"
+            >
+              {/* Soft Vignette Background */}
+              <motion.div
+                className="absolute inset-0 rounded-[24px] pointer-events-none"
+                style={{
+                  background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.4) 100%)',
+                }}
+              />
 
-                            {/* Data Flow indicators */}
-                            <circle cx="100" cy="120" r="3" fill="currentColor" opacity="0.7" filter="url(#neonGlow)"/>
-                            <circle cx="180" cy="180" r="3" fill="currentColor" opacity="0.8" filter="url(#neonGlow)"/>
-                            <circle cx="280" cy="220" r="3" fill="currentColor" opacity="0.9" filter="url(#neonGlow)"/>
-                        </svg>
-                    </div>
-                </div>
+              {/* Rounded Backlight */}
+              <motion.div
+                animate={{
+                  opacity: [0.6, 0.9, 0.6],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+                className="absolute -inset-8 rounded-[40px] bg-gradient-to-br from-brand-accent/30 via-brand-accent/10 to-transparent blur-2xl pointer-events-none -z-10"
+              />
 
-            </div>
-        </section>
-    )
+              {/* Main Image with Premium Styling */}
+              <div className="relative w-full h-full rounded-[24px] overflow-hidden border-2 border-white bg-transparent hover:bg-brand-surface-raised/40 hover:border-brand-accent transition-all duration-300 group">
+                {/* Let's Connect Label */}
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.8, duration: 0.5 }}
+                  className="absolute top-6 right-6 z-10 px-4 py-2 bg-brand-accent/90 text-white rounded-full text-xs font-semibold uppercase tracking-wider"
+                >
+                  Let's Connect →
+                </motion.div>
+
+                {/* Image */}
+                <motion.img 
+                  src="/ashwath.jpg" 
+                  alt="Ashwath Nagarajan" 
+                  className="w-full h-full object-cover object-center"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.6 }}
+                />
+
+                {/* Soft Edge Vignette - Premium fade */}
+                <div 
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: 'radial-gradient(ellipse 80% 100% at 50% 100%, transparent 40%, rgba(0,0,0,0.6) 100%)',
+                  }}
+                />
+
+                {/* Top light vignette */}
+                <div 
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: 'radial-gradient(ellipse 100% 50% at 50% 0%, rgba(251,191,36,0.1) 0%, transparent 60%)',
+                  }}
+                />
+              </div>
+
+              {/* Testimonial Quote Below Image */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.5 }}
+                className="absolute -bottom-24 left-1/2 transform -translate-x-1/2 max-w-sm bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 shadow-xl"
+              >
+                <p className="text-xs text-gray-300 italic leading-relaxed text-center">
+                  "*Building AI solutions that make a real impact.*"
+                </p>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+
+        {/* Premium Scroll Indicator */}
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{
+            duration: 2.5,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-3"
+        >
+          <p className="text-xs font-light text-gray-500 uppercase tracking-[0.1em]">Scroll</p>
+          <div className="w-6 h-10 border border-gray-600 rounded-full flex justify-center hover:border-brand-accent/60 transition-colors duration-300">
+            <motion.div
+              animate={{ y: [4, 8, 4] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+              className="w-1 h-2 bg-gradient-to-b from-brand-accent to-transparent rounded-full mt-2"
+            />
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
 }
+
+export default Home
