@@ -63,7 +63,7 @@ const Button = forwardRef(
       ${fullWidth ? 'w-full' : ''}
       ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
       ${className}
-      inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent cursor-pointer
+      inline-flex items-center justify-center font-semibold rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent cursor-pointer
     `.trim()
 
     // Button element with motion
