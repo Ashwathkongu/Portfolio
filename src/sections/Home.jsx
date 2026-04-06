@@ -243,14 +243,16 @@ function Home() {
               {/* Main Image with Premium Styling */}
               <div className="relative w-full h-full rounded-[24px] overflow-hidden border-2 border-white bg-transparent hover:bg-brand-surface-raised/40 hover:border-brand-accent transition-all duration-300 group">
                 {/* Let's Connect Label */}
-                <motion.div
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8, duration: 0.5 }}
-                  className="absolute top-6 right-6 z-10 px-4 py-2 bg-brand-accent/90 text-white rounded-full text-xs font-semibold uppercase tracking-wider"
-                >
-                  Let's Connect →
-                </motion.div>
+                <a href='#contact'>
+                  <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8, duration: 0.5 }}
+                    className="absolute top-6 right-6 z-10 px-4 py-2 bg-brand-accent/90 text-white rounded-full text-xs font-semibold uppercase tracking-wider"
+                  >
+                    Let's Connect →
+                  </motion.div>
+                </a>
 
                 {/* Image */}
                 <motion.img 
