@@ -449,7 +449,6 @@ const Contact = () => {
                     rows="5"
                     className="portfolio-textarea"
                     placeholder="Tell me about your project or opportunity..."
-                    placeholder="Tell me about your project or opportunity..."
                   />
                 </motion.div>
 
