@@ -19,7 +19,7 @@ const Skills = () => {
       category: 'Backend',
       description: 'Server-side technologies',
       icon: FaCog,
-      skills: ['FastAPI', 'Node.js','Express', 'Django'],
+      skills: ['FastAPI', 'Node.js','Express'],
     },
     {
       category: 'Databases',
@@ -99,7 +99,7 @@ const Skills = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ margin: '-50px' }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 w-full"
         >
           {skillCategories.map((category, index) => {
             const IconComponent = category.icon
@@ -111,20 +111,20 @@ const Skills = () => {
                 className="portfolio-card-lg portfolio-card-hover"
               >
                 {/* Category Header with Icon */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="text-brand-accent text-3xl">
+                <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                  <div className="text-brand-accent text-2xl sm:text-3xl">
                     <IconComponent />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-black text-brand-text-primary">{category.category}</h3>
+                    <h3 className="text-lg sm:text-2xl font-black text-brand-text-primary">{category.category}</h3>
                     <p className="text-xs text-brand-text-muted">{category.description}</p>
                   </div>
                 </div>
 
-                <div className="border-t border-blue-500/50 pt-4 mt-4" />
+                <div className="border-t border-blue-500/50 pt-3 sm:pt-4 mt-3 sm:mt-4" />
 
                 {/* Skills as text badges */}
-                <div className="flex flex-wrap gap-2 mt-4">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-3 sm:mt-4">
                   {category.skills.map((skill, skillIndex) => (
                     <motion.div
                       key={skillIndex}
@@ -146,10 +146,10 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ margin: '-50px' }}
-          className="mt-16 portfolio-card-lg portfolio-card-hover"
+          className="mt-8 sm:mt-12 md:mt-16 portfolio-card-lg portfolio-card-hover"
         >
-          <h3 className="text-3xl font-black text-brand-text-primary mb-8">Proficiency Levels</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <h3 className="text-2xl sm:text-3xl font-black text-brand-text-primary mb-4 sm:mb-8">Proficiency Levels</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
             {[
               { skill: 'Python & Data Science', level: 85 },
               { skill: 'React & Frontend', level: 75 },
@@ -162,17 +162,18 @@ const Skills = () => {
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: index * 0.1 }}
                 viewport={{ margin: '-50px' }}
+                className="w-full"
               >
-                <div className="flex justify-between mb-3">
-                  <span className="font-semibold text-brand-text-secondary">{item.skill}</span>
-                  <span className="font-bold text-brand-accent">{item.level}%</span>
+                <div className="flex justify-between mb-2 sm:mb-3 gap-2">
+                  <span className="font-semibold text-sm sm:text-base text-brand-text-secondary flex-1">{item.skill}</span>
+                  <span className="font-bold text-brand-accent whitespace-nowrap text-sm sm:text-base">{item.level}%</span>
                 </div>
-                <div className="w-full h-3 bg-brand-bg-primary rounded-full overflow-hidden border border-blue-500">
+                <div className="w-full h-2 sm:h-3 bg-brand-bg-primary rounded-full overflow-hidden border border-blue-500">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: `${item.level}%` }}
-                    transition={{ duration: 1, delay: index * 0.1 }}
-                    viewport={{ margin: '-50px' }}
+                    transition={{ duration: 1.2, delay: index * 0.15, ease: 'easeOut' }}
+                    viewport={{ margin: '-50px', once: false }}
                     className="h-full bg-gradient-to-r from-brand-accent to-brand-accent-light rounded-full"
                   />
                 </div>

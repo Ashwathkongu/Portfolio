@@ -138,7 +138,8 @@ function Navbar() {
                   onClick={() => handleNavClick(item.id)}
                   title={item.label}
                   className={`
-                    relative p-2 rounded-lg
+                    relative w-10 h-10 rounded-lg
+                    flex items-center justify-center
                     transition-all duration-300
                     group
                     ${
@@ -148,7 +149,7 @@ function Navbar() {
                     }
                   `}
                 >
-                  <Icon size={20} />
+                  <Icon size={20} className="shrink-0" />
                   
                   {/* Tooltip on hover */}
                   <motion.div
@@ -161,17 +162,19 @@ function Navbar() {
                   </motion.div>
                   
                   {/* Active indicator dot below */}
-                  <motion.div
-                    animate={{
-                      opacity: isActive ? 1 : 0,
-                      scale: isActive ? 1 : 0,
-                    }}
-                    transition={{
-                      duration: 0.4,
-                      ease: 'easeInOut',
-                    }}
-                    className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2.5 h-2.5 bg-brand-accent rounded-full"
-                  />
+                  <span className="absolute left-1/2 -translate-x-[45%] bottom-0">
+                    <motion.span
+                      animate={{
+                        opacity: isActive ? 1 : 0,
+                        scale: isActive ? 1 : 0,
+                      }}
+                      transition={{
+                        duration: 0.4,
+                        ease: 'easeInOut',
+                      }}
+                      className="block w-2 h-2 bg-brand-accent rounded-full"
+                    />
+                  </span>
                 </motion.button>
               )
             })}

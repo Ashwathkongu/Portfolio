@@ -295,29 +295,7 @@ function Home() {
           </motion.div>
         </motion.div>
 
-        {/* Premium Scroll Indicator */}
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{
-            duration: 2.5,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-3"
-        >
-          <p className="text-xs font-light text-brand-text-muted uppercase tracking-[0.1em]">Scroll</p>
-          <div className="w-6 h-10 border border-gray-600 rounded-full flex justify-center hover:border-brand-accent/60 transition-colors duration-300">
-            <motion.div
-              animate={{ y: [4, 8, 4] }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-              className="w-1 h-2 bg-gradient-to-b from-brand-accent to-transparent rounded-full mt-2"
-            />
-          </div>
-        </motion.div>
+        
       </div>
     </section>
   )
