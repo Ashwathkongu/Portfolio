@@ -36,7 +36,7 @@ const Experience = () => {
       ],
       highlights: ['Gamified Learning', 'Multilingual Support', 'Low-spec Optimization', 'Dashboard Design'],
       icon: FaTrophy,
-      accentColor: 'from-amber-500 to-orange-500',
+      accentColor: 'from-slate-300 to-white',
     },
   ]
 
@@ -62,14 +62,14 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8 flex items-center bg-transparent text-white -mb-px overflow-hidden"
+      className="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8 flex items-center bg-transparent text-brand-text-primary -mb-px overflow-hidden"
     >
       {/* Section transition gradient overlay */}
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white/[0.01] via-white/[0.005] to-transparent pointer-events-none" />
       {/* Background effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-40 left-1/3 w-96 h-96 bg-gradient-to-br from-blue-500/8 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-32 right-1/4 w-80 h-80 bg-gradient-to-tl from-amber-500/8 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-32 right-1/4 w-80 h-80 bg-gradient-to-tl from-slate-300/8 to-transparent rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-4xl w-full mx-auto relative z-10">
@@ -81,14 +81,14 @@ const Experience = () => {
           className="mb-20 text-center"
         >
           <h2 className="text-5xl sm:text-6xl font-black mb-6 leading-tight">
-            Work <span className="bg-gradient-to-r from-brand-accent to-amber-400 bg-clip-text text-transparent">Experience</span>
+            Work <span className="bg-gradient-to-r from-brand-accent to-blue-600 bg-clip-text text-transparent">Experience</span>
           </h2>
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ margin: '-50px' }}
-            className="w-24 h-1.5 bg-gradient-to-r from-brand-accent to-amber-400 rounded-full mx-auto mb-6"
+            className="w-24 h-1.5 bg-gradient-to-r from-brand-accent to-blue-600 rounded-full mx-auto mb-6"
             style={{ transformOrigin: 'center' }}
           />
         </motion.div>
@@ -111,20 +111,20 @@ const Experience = () => {
               >
                 {/* Timeline Line and Marker */}
                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-brand-accent via-brand-accent/50 to-transparent ml-7" />
-                <div className={`absolute left-0 top-8 w-16 h-16 rounded-full bg-transparent border-2 border-white flex items-center justify-center hover:bg-brand-surface-raised/40 hover:border-brand-accent transition-all duration-300 group`}>
-                  <IconComponent className={`text-2xl text-white group-hover:text-brand-accent transition-colors duration-300`} />
+                <div className={`absolute left-0 top-8 w-16 h-16 rounded-full bg-transparent border-2 border-blue-500 flex items-center justify-center hover:bg-brand-surface-raised/40 hover:border-brand-accent transition-all duration-300 group`}>
+                  <IconComponent className={`text-2xl text-brand-text-primary group-hover:text-brand-accent transition-colors duration-300`} />
                 </div>
 
                 {/* Content Card */}
                 <motion.div
                   whileHover={{ y: -4, x: 8 }}
-                  className="ml-32 p-8 rounded-2xl bg-transparent border-2 border-white hover:bg-brand-surface-raised/40 hover:border-brand-accent transition-all duration-300"
+                  className="ml-32 portfolio-card-lg portfolio-card-hover"
                 >
                   {/* Header */}
                   <div className="mb-4">
                     <div className="flex items-start justify-between mb-2">
                       <div>
-                        <h3 className="text-2xl font-black text-white mb-1">
+                        <h3 className="text-2xl font-black text-brand-text-primary mb-1">
                           {exp.title}
                         </h3>
                         <p className="text-lg text-brand-accent font-semibold">
@@ -134,19 +134,19 @@ const Experience = () => {
                     </div>
 
                     {/* Meta Information */}
-                    <div className="flex flex-wrap gap-4 text-sm text-gray-400 mt-3">
+                    <div className="flex flex-wrap gap-4 text-sm text-brand-text-muted mt-3">
                       <div className="flex items-center gap-2">
                         <FaCalendar className="text-brand-accent" size={14} />
                         <span>{exp.duration}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-gray-500">•</span>
+                        <span className="text-brand-text-muted">•</span>
                         <span>{exp.location}</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="border-t border-brand-border/50 my-4" />
+                  <div className="border-t border-blue-500/50 my-4" />
 
                   {/* Responsibilities */}
                   <div className="mb-6">
@@ -161,7 +161,7 @@ const Experience = () => {
                           whileInView={{ opacity: 1, x: 0 }}
                           transition={{ delay: idx * 0.05 }}
                           viewport={{ once: true }}
-                          className="flex gap-3 text-gray-300 text-sm leading-relaxed"
+                          className="flex gap-3 text-brand-text-secondary text-sm leading-relaxed"
                         >
                           <FaArrowRight className="text-brand-accent flex-shrink-0 mt-1" size={12} />
                           <span>{item}</span>
@@ -171,12 +171,12 @@ const Experience = () => {
                   </div>
 
                   {/* Key Highlights */}
-                  <div className="flex flex-wrap gap-2 pt-4 border-t border-brand-border/30">
+                  <div className="flex flex-wrap gap-2 pt-4 border-t border-blue-500/30">
                     {exp.highlights.map((highlight, idx) => (
                       <motion.span
                         key={idx}
                         whileHover={{ scale: 1.05 }}
-                        className="px-3 py-1 text-xs font-semibold rounded-full bg-brand-accent/10 border border-white/20 text-brand-accent"
+                        className="px-3 py-1 text-xs font-semibold rounded-full bg-brand-accent/10 border border-blue-500 text-brand-accent"
                       >
                         {highlight}
                       </motion.span>

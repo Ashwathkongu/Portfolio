@@ -45,15 +45,15 @@ const Button = forwardRef(
     // Variant styles
     const variantClasses = {
       primary:
-        'btn-base bg-brand-accent text-black hover:bg-brand-accent_hover hover:shadow-glow-lg hover:scale-105 active:scale-95',
+        'btn-base bg-brand-accent text-white hover:bg-brand-accent-hover hover:shadow-glow-lg hover:scale-105 active:scale-95',
       secondary:
-        'btn-base border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-black hover:shadow-glow',
+        'btn-base border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-white hover:shadow-glow',
       ghost:
         'btn-base text-brand-text-secondary hover:text-brand-accent hover:bg-brand-surface-hover bg-transparent',
       accent:
         'btn-base bg-brand-accent/10 text-brand-accent border border-brand-accent/50 hover:bg-brand-accent/20 hover:border-brand-accent/80',
       danger:
-        'btn-base bg-red-500/20 text-red-400 border border-red-500/50 hover:bg-red-500/30 hover:border-red-500/80',
+        'btn-base bg-red-500/20 text-red-600 border border-red-500/50 hover:bg-red-500/30 hover:border-red-500/80',
     }
 
     // Build button classes

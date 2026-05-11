@@ -52,9 +52,9 @@ const Container = ({
   // Variant styles
   const variantClasses = {
     default: '',
-    bordered: 'border border-brand-border rounded-xl',
-    card: 'border border-brand-border rounded-xl shadow-card',
-    glass: 'border border-white/10 rounded-xl backdrop-blur-md',
+    bordered: 'border border-blue-500 rounded-xl',
+    card: 'border border-blue-500 rounded-xl shadow-card',
+    glass: 'border border-blue-500 rounded-xl backdrop-blur-md',
     accent: 'border-2 border-brand-accent/30 rounded-xl',
   }
 

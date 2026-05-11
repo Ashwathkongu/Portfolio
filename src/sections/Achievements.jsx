@@ -6,8 +6,8 @@ const Achievements = () => {
     title: 'Secured 1st Prize in Hybrid Coding Streak',
     icon: FaTrophy,
     description: 'Top recognition for excellence in competitive coding with exceptional problem-solving skills and consistent performance.',
-    badge: '🏆 1ST PRIZE',
-    accentColor: 'from-amber-400 to-yellow-500',
+    badge: '1ST PRIZE',
+    accentColor: 'from-slate-200 to-white',
   }
 
   const otherAchievements = [
@@ -77,11 +77,11 @@ const Achievements = () => {
   return (
     <section id="achievements" className="relative min-h-screen py-20 bg-transparent -mb-px overflow-hidden">
       {/* Section transition gradient overlay */}
-      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white/[0.01] via-white/[0.005] to-transparent pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-brand-accent/[0.01] via-brand-accent/[0.005] to-transparent pointer-events-none" />
       {/* Background Gradient Glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-gradient-to-bl from-amber-500/10 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-40 -right-40 w-96 h-96 bg-gradient-to-tr from-yellow-500/5 to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-20 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-gradient-to-bl from-slate-300/10 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-40 -right-40 w-96 h-96 bg-gradient-to-tr from-slate-200/5 to-transparent rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
@@ -94,16 +94,16 @@ const Achievements = () => {
           className="mb-16 text-center"
         >
           <h2 className="text-5xl sm:text-6xl font-black mb-6 leading-tight">
-            Achievements &<span className="bg-gradient-to-r from-brand-accent to-amber-400 bg-clip-text text-transparent"> Certifications</span>
+            Achievements &<span className="bg-gradient-to-r from-brand-accent to-blue-600 bg-clip-text text-transparent"> Certifications</span>
           </h2>
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="w-24 h-1.5 bg-gradient-to-r from-brand-accent to-amber-400 rounded-full mx-auto mb-6"
+            className="w-24 h-1.5 bg-gradient-to-r from-brand-accent to-blue-600 rounded-full mx-auto mb-6"
             style={{ transformOrigin: 'center' }}
           />
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-brand-text-muted max-w-2xl mx-auto">
             Recognized achievements and competitive accomplishments demonstrating technical excellence and innovation
           </p>
         </motion.div>
@@ -116,12 +116,12 @@ const Achievements = () => {
           viewport={{ margin: '-50px' }}
           className="mb-16"
         >
-          <div className="relative overflow-hidden rounded-2xl border-2 border-white p-8 sm:p-10 bg-transparent hover:bg-brand-surface-raised/40 hover:border-brand-accent transition-all duration-300 group">
+          <div className="relative overflow-hidden portfolio-card-lg portfolio-card-hover group">
             {/* Glow Backdrop */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
             {/* Accent glow effect */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-amber-500/15 to-transparent rounded-full blur-3xl -mr-32 -mt-32 group-hover:from-amber-500/25 transition-all duration-400 opacity-0 group-hover:opacity-100" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-slate-300/15 to-transparent rounded-full blur-3xl -mr-32 -mt-32 group-hover:from-slate-300/25 transition-all duration-400 opacity-0 group-hover:opacity-100" />
 
             <div className="relative z-10 flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
               {/* Icon */}
@@ -133,8 +133,8 @@ const Achievements = () => {
                 whileHover={{ scale: 1.15, rotate: 8 }}
                 className="flex-shrink-0"
               >
-                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-transparent border-2 border-white hover:bg-brand-surface-raised/40 hover:border-brand-accent flex items-center justify-center transition-all duration-300">
-                  <FeaturedIcon className="text-4xl sm:text-5xl text-brand-accent group-hover:text-amber-300 transition-colors duration-300 animate-pulse" />
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl portfolio-card portfolio-card-hover flex items-center justify-center">
+                  <FeaturedIcon className="text-4xl sm:text-5xl text-brand-accent group-hover:text-slate-100 transition-colors duration-300 animate-pulse" />
                 </div>
               </motion.div>
 
@@ -146,8 +146,8 @@ const Achievements = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                     viewport={{ margin: '-50px' }}
-                    whileHover={{ scale: 1.08, boxShadow: '0 0 20px rgba(251, 191, 36, 0.3)' }}
-                    className="inline-block px-4 py-1.5 bg-transparent border border-white hover:bg-brand-surface-raised/40 hover:border-brand-accent rounded-full text-sm font-semibold text-white hover:text-brand-accent transition-all"
+                    whileHover={{ scale: 1.08 }}
+                    className="portfolio-badge portfolio-badge-hover"
                   >
                     {featuredAchievement.badge}
                   </motion.span>
@@ -158,7 +158,7 @@ const Achievements = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.25 }}
                   viewport={{ margin: '-50px' }}
-                  className="text-2xl sm:text-3xl font-bold text-white mb-4 group-hover:text-brand-accent transition-colors duration-300"
+                  className="text-2xl sm:text-3xl font-bold text-brand-text-primary mb-4 group-hover:text-brand-accent transition-colors duration-300"
                 >
                   {featuredAchievement.title}
                 </motion.h3>
@@ -168,7 +168,7 @@ const Achievements = () => {
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                   viewport={{ margin: '-50px' }}
-                  className="text-gray-300 text-base sm:text-lg leading-relaxed"
+                  className="text-brand-text-secondary text-base sm:text-lg leading-relaxed"
                 >
                   {featuredAchievement.description}
                 </motion.p>
@@ -203,7 +203,7 @@ const Achievements = () => {
                 key={index}
                 variants={itemVariants}
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className="group relative overflow-hidden rounded-xl border-2 border-white p-6 bg-transparent backdrop-blur-sm hover:bg-brand-surface-raised/40 hover:border-brand-accent transition-all duration-300"
+                className="portfolio-card-md portfolio-card-hover group"
               >
                 {/* Glow Backdrop */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -228,9 +228,9 @@ const Achievements = () => {
                     transition={{ duration: 0.5, delay: 0.1 + index * 0.05 }}
                     viewport={{ margin: '-50px' }}
                     whileHover={{ rotate: 12, scale: 1.1 }}
-                    className="w-14 h-14 rounded-lg bg-transparent border border-white flex items-center justify-center mb-4 group-hover:border-brand-accent transition-colors duration-300"
+                    className="w-14 h-14 rounded-lg bg-transparent border border-blue-500 flex items-center justify-center mb-4 group-hover:border-brand-accent transition-colors duration-300"
                   >
-                    <Icon className="text-2xl text-brand-accent group-hover:text-amber-300 transition-colors duration-300" />
+                    <Icon className="text-2xl text-brand-accent group-hover:text-slate-100 transition-colors duration-300\" />
                   </motion.div>
 
                   {/* Badge */}
@@ -250,13 +250,13 @@ const Achievements = () => {
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.4, delay: 0.2 + index * 0.05 }}
                     viewport={{ margin: '-50px' }}
-                    className="text-lg font-bold text-white mb-2 group-hover:text-brand-accent transition-colors duration-300"
+                    className="text-lg font-bold text-brand-text-primary mb-2 group-hover:text-brand-accent transition-colors duration-300"
                   >
                     {achievement.title}
                   </motion.h4>
 
                   {/* Description */}
-                  <p className="text-sm text-gray-300 leading-relaxed">
+                  <p className="text-sm text-brand-text-secondary leading-relaxed">
                     {achievement.description}
                   </p>
 
@@ -280,8 +280,8 @@ const Achievements = () => {
           viewport={{ margin: '-50px' }}
           className="mb-16"
         >
-          <h3 className="text-3xl sm:text-4xl font-bold text-white mb-10 text-center">
-            Professional <span className="bg-gradient-to-r from-brand-accent to-amber-400 bg-clip-text text-transparent">Certifications</span>
+          <h3 className="text-3xl sm:text-4xl font-bold text-brand-text-primary mb-10 text-center">
+            Professional <span className="bg-gradient-to-r from-brand-accent to-blue-600 bg-clip-text text-transparent">Certifications</span>
           </h3>
           <motion.div
             variants={containerVariants}
@@ -297,23 +297,8 @@ const Achievements = () => {
                   key={index}
                   variants={itemVariants}
                   whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                  className="group relative overflow-hidden rounded-xl border-2 border-white p-6 bg-transparent backdrop-blur-sm hover:bg-brand-surface-raised/40 hover:border-brand-accent transition-all duration-300"
+                  className="portfolio-card-md portfolio-card-hover group"
                 >
-                  {/* Glow Backdrop */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-                  {/* Top accent line on hover */}
-                  <motion.div
-                    className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-accent to-transparent"
-                    initial={{ scaleX: 0 }}
-                    whileHover={{ scaleX: 1 }}
-                    transition={{ duration: 0.3 }}
-                    style={{ transformOrigin: 'left' }}
-                  />
-
-                  {/* Background glow */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-brand-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
                   <div className="relative z-10">
                     {/* Icon Container */}
                     <motion.div
@@ -322,9 +307,9 @@ const Achievements = () => {
                       transition={{ duration: 0.5, delay: 0.1 + index * 0.05 }}
                       viewport={{ margin: '-50px' }}
                       whileHover={{ rotate: 12, scale: 1.1 }}
-                      className="w-14 h-14 rounded-lg bg-transparent border border-white flex items-center justify-center mb-4 group-hover:border-brand-accent transition-colors duration-300"
+                      className="w-14 h-14 rounded-lg bg-transparent border border-blue-500 flex items-center justify-center mb-4 group-hover:border-brand-accent transition-colors duration-300"
                     >
-                      <Icon className="text-2xl text-brand-accent group-hover:text-amber-300 transition-colors duration-300" />
+                      <Icon className="text-2xl text-brand-accent group-hover:text-slate-100 transition-colors duration-300" />
                     </motion.div>
 
                     {/* Badge */}
@@ -344,13 +329,13 @@ const Achievements = () => {
                       whileInView={{ opacity: 1 }}
                       transition={{ duration: 0.4, delay: 0.2 + index * 0.05 }}
                       viewport={{ margin: '-50px' }}
-                      className="text-lg font-bold text-white mb-2 group-hover:text-brand-accent transition-colors duration-300"
+                      className="text-lg font-bold text-brand-text-primary mb-2 group-hover:text-brand-accent transition-colors duration-300"
                     >
                       {cert.title}
                     </motion.h4>
 
                     {/* Description */}
-                    <p className="text-sm text-gray-300 leading-relaxed">
+                    <p className="text-sm text-brand-text-secondary leading-relaxed">
                       {cert.description}
                     </p>
 
@@ -373,10 +358,10 @@ const Achievements = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ margin: '-50px' }}
-          className="p-8 rounded-xl border-2 border-white bg-transparent hover:bg-brand-surface-raised/40 hover:border-brand-accent transition-all duration-300 group"
+          className="portfolio-card-lg portfolio-card-hover group"
         >
           {/* Glow Backdrop */}
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none" />
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 relative z-10">
             {[
@@ -394,12 +379,12 @@ const Achievements = () => {
                 className="text-center group/stat"
               >
                 <motion.div
-                  className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-brand-accent to-amber-400 bg-clip-text text-transparent mb-2"
+                  className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-brand-accent to-blue-400 bg-clip-text text-transparent mb-2"
                   whileHover={{ scale: 1.15 }}
                 >
                   {stat.value}
                 </motion.div>
-                <p className="text-sm text-gray-400 group-hover/stat:text-gray-300 transition-colors">{stat.label}</p>
+                <p className="text-sm text-brand-text-muted group-hover/stat:text-brand-text-secondary transition-colors">{stat.label}</p>
               </motion.div>
             ))}
           </div>

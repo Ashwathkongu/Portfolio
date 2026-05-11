@@ -15,14 +15,14 @@ const Badge = ({
   className = '',
 }) => {
   const variantClasses = {
-    default: 'bg-brand-surface-raised text-brand-text-secondary border border-brand-border',
+    default: 'bg-brand-surface-raised text-brand-text-secondary border border-blue-500',
     primary: 'bg-brand-accent/10 text-brand-accent border border-brand-accent/50',
-    secondary: 'bg-blue-500/10 text-blue-400 border border-blue-500/50',
-    success: 'bg-green-500/10 text-green-400 border border-green-500/50',
-    warning: 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/50',
-    error: 'bg-red-500/10 text-red-400 border border-red-500/50',
-    accent: 'bg-brand-accent text-black font-semibold',
-    ghost: 'bg-transparent text-brand-text-secondary border border-brand-border',
+    secondary: 'bg-blue-500/10 text-blue-600 border border-blue-500/50',
+    success: 'bg-green-500/10 text-green-600 border border-green-500/50',
+    warning: 'bg-slate-200/30 text-slate-600 border border-slate-300/50',
+    error: 'bg-red-500/10 text-red-600 border border-red-500/50',
+    accent: 'bg-brand-accent text-white font-semibold',
+    ghost: 'bg-transparent text-brand-text-secondary border border-blue-500',
   }
 
   const sizeClasses = {

@@ -18,10 +18,16 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --wave-primary: 59, 130, 246;
+  --wave-secondary: 34, 211, 238;
+  --wave-tertiary: 99, 102, 241;
+}
+
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background-color: #0f172a;
-  color: #e2e8f0;
+  background-color: #c5ddf5;
+  color: #0f172a;
   overflow-x: hidden;
   position: relative;
 }
@@ -40,11 +46,11 @@ body::before {
   bottom: 0;
   background: linear-gradient(
     135deg,
-    #0f172a 0%,
-    #1a2847 25%,
-    #0f172a 50%,
-    #1a1f35 75%,
-    #0f172a 100%
+    #c5ddf5 0%,
+    #d1e5f8 25%,
+    #cde0f1 50%,
+    #d4e8f9 75%,
+    #c5ddf5 100%
   );
   pointer-events: none;
   z-index: -2;
@@ -60,8 +66,8 @@ body::after {
   height: 200%;
   background: radial-gradient(
     circle at 20% 30%,
-    rgba(251, 191, 36, 0.08) 0%,
-    rgba(251, 191, 36, 0.04) 15%,
+    rgba(37, 99, 235, 0.35) 0%,
+    rgba(59, 130, 246, 0.18) 15%,
     transparent 50%
   );
   pointer-events: none;
@@ -79,8 +85,8 @@ html::before {
   height: 60%;
   background: radial-gradient(
     circle,
-    rgba(30, 58, 82, 0.3) 0%,
-    rgba(30, 58, 82, 0.1) 30%,
+    rgba(37, 99, 235, 0.4) 0%,
+    rgba(59, 130, 246, 0.18) 30%,
     transparent 70%
   );
   pointer-events: none;
@@ -97,12 +103,24 @@ html::after {
   height: 40%;
   background: radial-gradient(
     circle,
-    rgba(251, 191, 36, 0.04) 0%,
+    rgba(59, 130, 246, 0.2) 0%,
     transparent 70%
   );
   pointer-events: none;
   z-index: -1;
+  animation: subtle-float 15s ease-in-out infinite;
 }
+
+/* Additional animated layer 1 - floating orb */
+body {
+  --animated-bg-1: fixed;
+  --animated-bg-1-top: -10%;
+  --animated-bg-1-left: 80%;
+  --animated-bg-1-size: 300px;
+}
+
+/* Removed invalid pseudo-element selector body::before::after 
+   Animation handled by AnimatedBackground component */
 
 /* ============================================================================
    ANIMATIONS
@@ -170,12 +188,31 @@ html::after {
   }
 }
 
-@keyframes pulse-glow {
+@keyframes subtle-float {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+    transform: translateY(0px) translateX(0px);
+    opacity: 0.2;
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0.3;
   }
   50% {
-    box-shadow: 0 0 40px rgba(251, 191, 36, 0.6);
+    transform: translateY(0px) translateX(20px);
+    opacity: 0.25;
+  }
+  75% {
+    transform: translateY(20px) translateX(10px);
+    opacity: 0.3;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
 }
 
@@ -208,23 +245,23 @@ html::after {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(30, 41, 59, 0.6);
+  background: rgba(226, 232, 240, 0.4);
   background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #fbbf24 0%, #f59e0b 100%);
+  background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
   border-radius: 10px;
-  border: 3px solid rgba(30, 41, 59, 0.6);
+  border: 3px solid rgba(226, 232, 240, 0.4);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #fde047 0%, #fbbf24 100%);
+  background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
 }
 
 /* Firefox */
 * {
-  scrollbar-color: #fbbf24 rgba(30, 41, 59, 0.6);
+  scrollbar-color: #3b82f6 rgba(226, 232, 240, 0.4);
   scrollbar-width: thin;
 }
 
@@ -235,33 +272,36 @@ html::after {
 @layer components {
   /* Headings */
   h1 {
-    @apply text-6xl font-extrabold tracking-tight text-white;
+    @apply text-6xl font-extrabold tracking-tight text-brand-text-primary;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   }
 
   h2 {
-    @apply text-4xl font-bold tracking-tight text-white;
+    @apply text-4xl font-bold tracking-tight text-brand-text-primary;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   }
 
   h3 {
-    @apply text-2xl font-semibold text-white;
+    @apply text-2xl font-semibold text-brand-text-primary;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
   }
 
   h4 {
-    @apply text-lg font-semibold text-white;
+    @apply text-lg font-semibold text-brand-text-primary;
   }
 
   h5 {
-    @apply text-base font-semibold text-white;
+    @apply text-base font-semibold text-brand-text-primary;
   }
 
   h6 {
     @apply text-sm font-semibold uppercase tracking-wide;
-    color: #94a3b8;
+    color: #475569;
   }
 
   p {
     @apply text-base leading-relaxed;
-    color: #e2e8f0;
+    color: #0f172a;
   }
 
   a {
@@ -317,25 +357,25 @@ html::after {
      ============================================================================ */
 
   .section-title {
-    @apply text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 text-white;
+    @apply text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 text-brand-text-primary;
   }
 
   .section-title-lg {
-    @apply text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-8 text-white tracking-tight;
+    @apply text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-8 text-brand-text-primary tracking-tight;
   }
 
   .section-title-sm {
-    @apply text-3xl sm:text-4xl font-bold mb-4 text-white;
+    @apply text-3xl sm:text-4xl font-bold mb-4 text-brand-text-primary;
   }
 
   .section-subtitle {
     @apply text-lg sm:text-xl leading-relaxed;
-    color: #94a3b8;
+    color: #64748b;
   }
 
   .section-subtitle-lg {
     @apply text-xl sm:text-2xl leading-relaxed max-w-3xl;
-    color: #e2e8f0;
+    color: #475569;
   }
 
   .section-accent-line {
@@ -351,50 +391,50 @@ html::after {
   }
 
   .btn-primary {
-    @apply btn-base px-8 py-3 bg-brand-accent text-black hover:bg-brand-accent-hover hover:shadow-glow-lg hover:scale-105 active:scale-95;
+    @apply btn-base px-8 py-3 bg-brand-accent text-white hover:bg-brand-accent-hover hover:shadow-glow-lg hover:scale-105 active:scale-95;
   }
 
   .btn-primary-lg {
-    @apply btn-base px-10 py-4 text-lg bg-brand-accent text-black hover:bg-brand-accent-hover hover:shadow-glow-lg hover:scale-105 active:scale-95;
+    @apply btn-base px-10 py-4 text-lg bg-brand-accent text-white hover:bg-brand-accent-hover hover:shadow-glow-lg hover:scale-105 active:scale-95;
   }
 
   .btn-primary-sm {
-    @apply btn-base px-6 py-2 text-sm bg-brand-accent text-black hover:bg-brand-accent-hover active:scale-95;
+    @apply btn-base px-6 py-2 text-sm bg-brand-accent text-white hover:bg-brand-accent-hover active:scale-95;
   }
 
   .btn-secondary {
-    @apply btn-base px-8 py-3 border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-black hover:shadow-glow transition-all;
+    @apply btn-base px-8 py-3 border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-white hover:shadow-glow transition-all;
   }
 
   .btn-secondary-lg {
-    @apply btn-base px-10 py-4 text-lg border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-black transition-all;
+    @apply btn-base px-10 py-4 text-lg border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-white transition-all;
   }
 
   .btn-secondary-sm {
-    @apply btn-base px-6 py-2 text-sm border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-black;
+    @apply btn-base px-6 py-2 text-sm border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-white;
   }
 
   .btn-ghost {
     @apply btn-base px-6 py-3 bg-transparent;
-    color: #e2e8f0;
+    color: #334155;
   }
   .btn-ghost:hover {
     @apply text-brand-accent;
-    background-color: #1e3a52;
+    background-color: #e2e8f0;
   }
 
   .btn-ghost-lg {
     @apply btn-base px-8 py-4 text-lg bg-transparent;
-    color: #e2e8f0;
+    color: #334155;
   }
   .btn-ghost-lg:hover {
     @apply text-brand-accent;
-    background-color: #1e3a52;
+    background-color: #e2e8f0;
   }
 
   .btn-ghost-sm {
     @apply btn-base px-4 py-2 text-sm bg-transparent;
-    color: #e2e8f0;
+    color: #334155;
   }
   .btn-ghost-sm:hover {
     @apply text-brand-accent;
@@ -417,11 +457,11 @@ html::after {
   }
 
   .text-muted {
-    color: #94a3b8;
+    color: #64748b;
   }
 
   .text-faded {
-    color: #64748b;
+    color: #94a3b8;
   }
 
   .text-gradient {
@@ -453,11 +493,11 @@ html::after {
   }
 
   .card-glass {
-    @apply card-base p-6 bg-white/5 backdrop-blur-md border border-white/10 hover:border-brand-accent/30;
+    @apply card-base p-6 bg-white/40 backdrop-blur-md border border-brand-accent/20 hover:border-brand-accent/50;
   }
 
   .card-accent {
-    @apply card-base p-6 bg-brand-accent/5 border-2 border-brand-accent/30 hover:border-brand-accent/60 hover:bg-brand-accent/10;
+    @apply card-base p-6 bg-brand-accent/10 border-2 border-brand-accent/50 hover:border-brand-accent/80 hover:bg-brand-accent/15;
   }
 
   /* ============================================================================
@@ -537,7 +577,7 @@ html::after {
   }
 
   .blur-bg {
-    @apply backdrop-blur-md bg-white/5;
+    @apply backdrop-blur-md bg-white/30;
   }
 
   /* ============================================================================
@@ -546,7 +586,7 @@ html::after {
 
   .nav-link {
     @apply transition-colors duration-300 font-medium text-sm;
-    color: #94a3b8;
+    color: #64748b;
   }
   .nav-link:hover {
     @apply text-brand-accent;
@@ -631,4 +671,260 @@ html::after {
 
 .animate-entrance-delay-4 {
   animation: fadeInUp 0.6s ease-out 0.4s both;
+}
+
+/* ============================================================================
+   REUSABLE PORTFOLIO COMPONENT CLASSES
+   ============================================================================ */
+
+/* Portfolio Cards - Glassmorphism effect */
+.portfolio-card {
+  @apply relative rounded-3xl bg-white/10 backdrop-blur-md border border-blue-500 shadow-lg hover:shadow-xl hover:border-blue-600 transition-all duration-300;
+}
+
+/* Enhanced hover effects for premium feel */
+.portfolio-card:hover {
+  @apply transform hover:-translate-y-2 hover:bg-white/15;
+}
+
+/* Featured card with gradient overlay */
+.portfolio-card-featured {
+  @apply before:absolute before:inset-0 before:rounded-3xl before:bg-gradient-to-br before:from-blue-200/20 before:via-transparent before:to-purple-200/20 before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-300;
+}
+
+.portfolio-card-lg {
+  @apply portfolio-card p-8;
+}
+
+.portfolio-card-md {
+  @apply portfolio-card p-6;
+}
+
+.portfolio-card-sm {
+  @apply portfolio-card p-4;
+}
+
+.portfolio-card-hover {
+  @apply hover:-translate-y-1 hover:shadow-xl hover:border-brand-accent/60 transition-all duration-300;
+}
+
+/* Portfolio Card Text */
+.portfolio-card-title {
+  @apply text-xl sm:text-2xl font-bold text-brand-text-primary leading-tight;
+}
+
+.portfolio-card-subtitle {
+  @apply text-sm sm:text-base text-brand-text-secondary font-medium;
+}
+
+.portfolio-card-text {
+  @apply text-sm sm:text-base text-brand-text-secondary leading-relaxed;
+}
+
+.portfolio-card-description {
+  @apply text-base text-brand-text-secondary leading-relaxed;
+}
+
+.portfolio-card-label {
+  @apply text-xs sm:text-sm font-semibold uppercase tracking-wide text-brand-text-muted;
+}
+
+/* Portfolio Badges */
+.portfolio-badge {
+  @apply inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold bg-white/15 text-brand-text-secondary border border-blue-500 transition-all duration-300;
+}
+
+.portfolio-badge:hover {
+  @apply bg-white/25 text-brand-accent border-brand-accent/60 scale-105;
+}
+
+.portfolio-badge-primary {
+  @apply bg-brand-accent text-white border-brand-accent;
+}
+
+.portfolio-badge-primary:hover {
+  @apply bg-brand-accent-hover;
+}
+
+.portfolio-badge-secondary {
+  @apply bg-blue-500/10 text-blue-600 border border-blue-500/30;
+}
+
+.portfolio-badge-secondary:hover {
+  @apply bg-blue-500/20 text-blue-700 border-blue-500/60;
+}
+
+.portfolio-badge-success {
+  @apply bg-green-500/10 text-green-600 border border-green-500/30;
+}
+
+.portfolio-badge-success:hover {
+  @apply bg-green-500/20 text-green-700 border-green-500/60;
+}
+
+.portfolio-badge-hover {
+  @apply hover:bg-white/25 hover:border-brand-accent/60 cursor-pointer;
+}
+
+/* Portfolio Input Fields */
+.portfolio-input {
+  @apply w-full px-4 py-3 bg-white/15 text-brand-text-primary placeholder:text-brand-text-muted border border-blue-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-brand-accent focus:bg-white/25 transition-all duration-300;
+}
+
+.portfolio-input-error {
+  @apply border-red-500/50 focus:ring-red-500/50;
+}
+
+.portfolio-textarea {
+  @apply portfolio-input resize-none min-h-32;
+}
+
+/* Portfolio Buttons - Additional styles */
+.portfolio-button {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent cursor-pointer;
+}
+
+.portfolio-button-primary {
+  @apply bg-brand-accent text-white hover:bg-brand-accent-hover hover:shadow-glow-lg hover:-translate-y-1;
+}
+
+.portfolio-button-secondary {
+  @apply bg-transparent border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-white transition-all;
+}
+
+.portfolio-button-ghost {
+  @apply bg-transparent text-brand-text-secondary hover:text-brand-accent hover:bg-brand-surface-raised;
+}
+
+.portfolio-button-sm {
+  @apply px-4 py-2 text-sm;
+}
+
+.portfolio-button-lg {
+  @apply px-8 py-4 text-lg;
+}
+
+/* ============================================================================
+   DESIGN SYSTEM & SPACING UTILITIES
+   ============================================================================ */
+
+/* Consistent Spacing Scales */
+.space-section {
+  @apply py-16 sm:py-20 lg:py-24;
+}
+
+.space-section-compact {
+  @apply py-12 sm:py-16;
+}
+
+.space-section-relaxed {
+  @apply py-20 sm:py-28;
+}
+
+.container-max-width {
+  @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.container-max-width-lg {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Section wrapper with rounded border */
+.section-wrapper {
+  @apply rounded-3xl border border-blue-500 bg-transparent hover:border-blue-600 transition-all duration-300 px-6 sm:px-8 py-12 sm:py-16;
+}
+
+/* Content spacing helpers */
+.content-spacing {
+  @apply space-y-6 sm:space-y-8;
+}
+
+.content-spacing-tight {
+  @apply space-y-4;
+}
+
+.content-spacing-loose {
+  @apply space-y-8 sm:space-y-10;
+}
+
+/* Depth & Shadow Utilities */
+.elevation-1 {
+  @apply shadow-sm;
+}
+
+.elevation-2 {
+  @apply shadow-md;
+}
+
+.elevation-3 {
+  @apply shadow-lg;
+}
+
+.elevation-hover {
+  @apply hover:shadow-xl hover:-translate-y-1 transition-all duration-300;
+}
+
+/* Focus Ring Utilities */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 focus:ring-offset-white/80;
+}
+
+.focus-ring-subtle {
+  @apply focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-1;
+}
+
+/* Transition Utilities */
+.transition-smooth {
+  @apply transition-all duration-300 ease-out;
+}
+
+.transition-fast {
+  @apply transition-all duration-150 ease-out;
+}
+
+.transition-slow {
+  @apply transition-all duration-500 ease-out;
+}
+
+/* Section Headers */
+.section-header {
+  @apply text-center mb-16 sm:mb-20;
+}
+
+.section-header-title {
+  @apply text-5xl sm:text-6xl font-black mb-6 leading-tight text-brand-text-primary;
+}
+
+.section-header-subtitle {
+  @apply text-lg sm:text-xl text-brand-text-secondary max-w-3xl mx-auto;
+}
+
+.section-header-accent {
+  @apply w-24 h-1.5 bg-gradient-to-r from-brand-accent to-blue-600 rounded-full mx-auto mt-6;
+}
+
+/* Grid Layouts */
+.grid-cards {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8;
+}
+
+.grid-cards-2 {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8;
+}
+
+.grid-cards-4 {
+  @apply grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6;
+}
+
+/* Form Group */
+.form-group {
+  @apply mb-6;
+}
+
+.form-label {
+  @apply block text-sm font-semibold text-brand-text-primary mb-2;
+}
+
+.form-helper {
+  @apply text-xs text-brand-text-muted mt-1;
 }

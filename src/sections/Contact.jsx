@@ -85,13 +85,13 @@ const Contact = () => {
       name: 'GitHub',
       icon: FaGithub,
       url: contactDetails.github,
-      color: 'hover:text-white',
+      color: 'hover:text-brand-accent',
     },
     {
       name: 'LinkedIn',
       icon: FaLinkedin,
       url: contactDetails.linkedin,
-      color: 'hover:text-blue-400',
+      color: 'hover:text-brand-accent',
     },
   ]
 
@@ -118,11 +118,11 @@ const Contact = () => {
   return (
     <section id="contact" className="relative min-h-screen py-20 bg-transparent -mb-px overflow-hidden">
       {/* Section transition gradient overlay */}
-      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white/[0.01] via-white/[0.005] to-transparent pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-brand-accent/[0.01] via-brand-accent/[0.005] to-transparent pointer-events-none" />
       {/* Background Gradient Glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 -left-40 w-96 h-96 bg-gradient-to-br from-blue-500/10 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-40 -right-40 w-96 h-96 bg-gradient-to-tl from-amber-500/5 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-40 -right-40 w-96 h-96 bg-gradient-to-tl from-slate-200/5 to-transparent rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
@@ -135,16 +135,16 @@ const Contact = () => {
           className="mb-16 text-center"
         >
           <h2 className="text-5xl sm:text-6xl font-black mb-6 leading-tight">
-            Let's <span className="bg-gradient-to-r from-brand-accent to-amber-400 bg-clip-text text-transparent">Connect</span>
+            Let's <span className="bg-gradient-to-r from-brand-accent to-blue-600 bg-clip-text text-transparent">Connect</span>
           </h2>
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="w-24 h-1.5 bg-gradient-to-r from-brand-accent to-amber-400 rounded-full mx-auto mb-6"
+            className="w-24 h-1.5 bg-gradient-to-r from-brand-accent to-blue-600 rounded-full mx-auto mb-6"
             style={{ transformOrigin: 'center' }}
           />
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-brand-text-muted max-w-2xl mx-auto">
             I'm open to internships, collaborations, and exciting project opportunities.
           </p>
         </motion.div>
@@ -164,7 +164,7 @@ const Contact = () => {
             {/* Content Container */}
             <div className="relative z-10">
               {/* Contact Cards */}
-              <div className="space-y-4">
+              <div className="space-y-6">
               {contactInfo.map((info, index) => {
                 const Icon = info.icon
                 const hintTexts = [
@@ -195,9 +195,9 @@ const Contact = () => {
                       />
 
                       {/* Card Base */}
-                      <div className="relative rounded-2xl overflow-hidden border-2 border-white group-hover:border-brand-accent transition-all duration-500">
+                      <div className="relative rounded-2xl overflow-hidden border-2 border-blue-500 group-hover:border-blue-600 transition-all duration-500 bg-white/10 backdrop-blur-md">
                         {/* Main Content Area */}
-                        <div className="relative bg-transparent p-4 rounded-2xl flex items-center gap-4 group-hover:bg-brand-surface-raised/40 transition-all duration-500">
+                        <div className="relative bg-transparent p-4 rounded-2xl flex items-center gap-4 group-hover:bg-white/15 transition-all duration-500">
                           
                           {/* Animated Icon Block - Floating */}
                           <motion.div
@@ -209,9 +209,9 @@ const Contact = () => {
                             <motion.div
                               animate={{ 
                                 boxShadow: [
-                                  '0 0 20px rgba(251, 191, 36, 0.4)',
-                                  '0 0 40px rgba(251, 191, 36, 0.6)',
-                                  '0 0 20px rgba(251, 191, 36, 0.4)'
+                                  '0 0 20px rgba(59, 130, 246, 0.4)',
+                                  '0 0 40px rgba(59, 130, 246, 0.6)',
+                                  '0 0 20px rgba(59, 130, 246, 0.4)'
                                 ]
                               }}
                               transition={{ duration: 3, repeat: Infinity }}
@@ -221,7 +221,7 @@ const Contact = () => {
                             {/* Icon Container - Premium Glass */}
                             <div className="relative w-14 h-14 rounded-xl overflow-hidden">
                               {/* Gradient Background */}
-                              <div className="absolute inset-0 bg-gradient-to-br from-brand-accent/30 to-amber-500/10 group-hover:from-brand-accent/50 group-hover:to-amber-500/20 transition-all duration-500" />
+                              <div className="absolute inset-0 bg-gradient-to-br from-brand-accent/30 to-slate-200/10 group-hover:from-brand-accent/50 group-hover:to-slate-200/20 transition-all duration-500" />
                               
                               {/* Border */}
                               <div className="absolute inset-0 rounded-xl border border-brand-accent/40 group-hover:border-brand-accent/70 transition-all duration-500" />
@@ -235,7 +235,7 @@ const Contact = () => {
                                   whileHover={{ scale: 1.15 }}
                                   className="relative"
                                 >
-                                  <Icon className="text-xl text-brand-accent group-hover:text-amber-300 transition-colors duration-500" />
+                                  <Icon className="text-xl text-brand-accent group-hover:text-slate-100 transition-colors duration-500" />
                                 </motion.div>
                               </div>
                             </div>
@@ -244,17 +244,17 @@ const Contact = () => {
                           {/* Content Block */}
                           <div className="flex-1 min-w-0">
                             <motion.h3 
-                              className="text-[10px] font-bold text-gray-400 group-hover:text-brand-accent transition-colors duration-500 uppercase tracking-[0.15em] mb-1"
+                              className="text-[10px] font-bold text-brand-text-muted group-hover:text-brand-accent transition-colors duration-500 uppercase tracking-[0.15em] mb-1"
                               initial={{ opacity: 0.7 }}
                               whileHover={{ opacity: 1 }}
                               transition={{ duration: 0.3 }}
                             >
                               {info.label}
                             </motion.h3>
-                            <p className="text-sm font-semibold text-white group-hover:text-brand-accent transition-colors duration-500 truncate group-hover:text-amber-100">
+                            <p className="text-sm font-semibold text-brand-text-primary group-hover:text-brand-accent transition-colors duration-500 truncate group-hover:text-slate-600">
                               {info.value}
                             </p>
-                            <p className="text-xs text-gray-500 group-hover:text-gray-300 transition-colors duration-500 mt-1.5 leading-tight">
+                            <p className="text-xs text-brand-text-muted group-hover:text-brand-text-secondary transition-colors duration-500 mt-1.5 leading-tight">
                               {hintTexts[index]}
                             </p>
                           </div>
@@ -264,7 +264,7 @@ const Contact = () => {
                             initial={{ x: 0, opacity: 0.5 }}
                             whileHover={{ x: 4, opacity: 1 }}
                             transition={{ duration: 0.3 }}
-                            className="flex-shrink-0 text-gray-500 group-hover:text-brand-accent transition-colors duration-500"
+                            className="flex-shrink-0 text-brand-text-muted group-hover:text-brand-accent transition-colors duration-500"
                           >
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -277,7 +277,7 @@ const Contact = () => {
                           initial={{ scaleX: 0 }}
                           whileHover={{ scaleX: 1 }}
                           transition={{ duration: 0.4 }}
-                          className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-brand-accent via-amber-400 to-transparent"
+                          className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-brand-accent via-slate-200 to-transparent"
                           style={{ transformOrigin: 'left' }}
                         />
                       </div>
@@ -295,10 +295,10 @@ const Contact = () => {
               viewport={{ margin: '-50px' }}
               className="pt-2"
             >
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">
+              <p className="text-xs font-semibold text-brand-text-muted uppercase tracking-widest mb-3">
                 Connect
               </p>
-              <div className="flex gap-2">
+              <div className="flex gap-4">
                 {socialLinks.map((social, index) => {
                   const Icon = social.icon
                   return (
@@ -345,7 +345,7 @@ const Contact = () => {
                   {copiedEmail ? (
                     <FaCheck className="text-green-400 text-lg" />
                   ) : (
-                    <FaCopy className="text-brand-accent text-lg group-hover:text-amber-300 transition-colors duration-300" />
+                    <FaCopy className="text-brand-accent text-lg group-hover:text-slate-100 transition-colors duration-300" />
                   )}
                 </motion.div>
               </motion.button>
@@ -369,13 +369,13 @@ const Contact = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ margin: '-50px' }}
-            className="relative overflow-hidden rounded-2xl border-2 border-white p-8 sm:p-10 bg-transparent hover:bg-brand-surface-raised/40 hover:border-brand-accent transition-all duration-300 group"
+            className="relative overflow-hidden rounded-3xl border-2 border-blue-500 p-8 sm:p-10 bg-white/10 backdrop-blur-md portfolio-card-hover group"
           >
             {/* Glow Backdrop */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl" />
 
             {/* Accent glow */}
-            <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-amber-500/15 to-transparent rounded-full blur-3xl -mr-24 -mt-24 group-hover:from-amber-500/25 transition-all duration-400 opacity-0 group-hover:opacity-100" />
+            <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-slate-300/15 to-transparent rounded-full blur-3xl -mr-24 -mt-24 group-hover:from-slate-300/25 transition-all duration-400 opacity-0 group-hover:opacity-100" />
 
             <div className="relative z-10">
               <motion.h3
@@ -383,7 +383,7 @@ const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.15 }}
                 viewport={{ margin: '-50px' }}
-                className="text-2xl font-bold text-white mb-6 group-hover:text-brand-accent transition-colors duration-300"
+                className="text-2xl font-bold text-brand-text-primary mb-6 group-hover:text-brand-accent transition-colors duration-300"
               >
                 Send Me a Message
               </motion.h3>
@@ -396,7 +396,7 @@ const Contact = () => {
                   transition={{ delay: 0.2, duration: 0.5 }}
                   viewport={{ margin: '-50px' }}
                 >
-                  <label className="block text-sm font-semibold text-gray-300 mb-2">
+                  <label className="block text-sm font-semibold text-brand-text-secondary mb-2">
                     Name
                   </label>
                   <input
@@ -405,7 +405,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-brand-surface-input/50 border border-white/20 rounded-lg text-white focus:outline-none focus:border-brand-accent/80 focus:ring-2 focus:ring-brand-accent/20 transition-all duration-300 placeholder-gray-500"
+                    className="portfolio-input"
                     placeholder="Your name"
                   />
                 </motion.div>
@@ -417,7 +417,7 @@ const Contact = () => {
                   transition={{ delay: 0.25, duration: 0.5 }}
                   viewport={{ margin: '-50px' }}
                 >
-                  <label className="block text-sm font-semibold text-gray-300 mb-2">
+                  <label className="block text-sm font-semibold text-brand-text-secondary mb-2">
                     Email
                   </label>
                   <input
@@ -426,7 +426,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-brand-surface-input/50 border border-brand-border/40 rounded-lg text-white focus:outline-none focus:border-brand-accent/80 focus:ring-2 focus:ring-brand-accent/20 transition-all duration-300 placeholder-gray-500"
+                    className="portfolio-input"
                     placeholder="your.email@example.com"
                   />
                 </motion.div>
@@ -438,7 +438,7 @@ const Contact = () => {
                   transition={{ delay: 0.3, duration: 0.5 }}
                   viewport={{ margin: '-50px' }}
                 >
-                  <label className="block text-sm font-semibold text-gray-300 mb-2">
+                  <label className="block text-sm font-semibold text-brand-text-secondary mb-2">
                     Message
                   </label>
                   <textarea
@@ -447,7 +447,8 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows="5"
-                    className="w-full px-4 py-3 bg-brand-surface-input/50 border border-white/20 rounded-lg text-white focus:outline-none focus:border-brand-accent/80 focus:ring-2 focus:ring-brand-accent/20 transition-all duration-300 placeholder-gray-500 resize-none"
+                    className="portfolio-textarea"
+                    placeholder="Tell me about your project or opportunity..."
                     placeholder="Tell me about your project or opportunity..."
                   />
                 </motion.div>
@@ -462,7 +463,7 @@ const Contact = () => {
                   whileTap={{ scale: 0.95 }}
                   disabled={formStatus.isSubmitting}
                   type="submit"
-                  className="w-full py-3 bg-gradient-to-r from-brand-accent to-amber-400 hover:shadow-lg hover:shadow-brand-accent/50 text-brand-bg-primary font-semibold rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full py-3 bg-gradient-to-r from-brand-accent to-blue-900 hover:shadow-lg hover:shadow-brand-accent/50 text-brand-bg-primary font-semibold rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {formStatus.isSubmitting ? (
                     <>

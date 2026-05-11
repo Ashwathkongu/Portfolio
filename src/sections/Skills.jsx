@@ -63,10 +63,10 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8 flex items-center bg-transparent text-white -mb-px overflow-hidden"
+      className="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8 flex items-center bg-transparent text-brand-text-primary -mb-px overflow-hidden"
     >
       {/* Section transition gradient overlay */}
-      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white/[0.01] via-white/[0.005] to-transparent pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-brand-accent/[0.01] via-brand-accent/[0.005] to-transparent pointer-events-none" />
       {/* Background effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-32 -right-60 w-96 h-96 bg-gradient-to-bl from-brand-accent/10 to-transparent rounded-full blur-3xl" />
@@ -82,14 +82,14 @@ const Skills = () => {
           className="mb-20 text-center"
         >
           <h2 className="text-5xl sm:text-6xl font-black mb-6 leading-tight">
-            Technical <span className="bg-gradient-to-r from-brand-accent to-amber-400 bg-clip-text text-transparent">Skills</span>
+            Technical <span className="bg-gradient-to-r from-brand-accent to-blue-600 bg-clip-text text-transparent">Skills</span>
           </h2>
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ margin: '-50px' }}
-            className="w-24 h-1.5 bg-gradient-to-r from-brand-accent to-amber-400 rounded-full mx-auto mb-6"
+            className="w-24 h-1.5 bg-gradient-to-r from-brand-accent to-blue-600 rounded-full mx-auto mb-6"
             style={{ transformOrigin: 'center' }}
           />
         </motion.div>
@@ -108,7 +108,7 @@ const Skills = () => {
                 key={index}
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
-                className="p-8 rounded-2xl bg-transparent border-2 border-white hover:bg-brand-surface-raised/40 hover:border-brand-accent transition-all duration-300"
+                className="portfolio-card-lg portfolio-card-hover"
               >
                 {/* Category Header with Icon */}
                 <div className="flex items-center gap-3 mb-4">
@@ -116,12 +116,12 @@ const Skills = () => {
                     <IconComponent />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-black text-white">{category.category}</h3>
-                    <p className="text-xs text-gray-400">{category.description}</p>
+                    <h3 className="text-2xl font-black text-brand-text-primary">{category.category}</h3>
+                    <p className="text-xs text-brand-text-muted">{category.description}</p>
                   </div>
                 </div>
 
-                <div className="border-t border-brand-border/50 pt-4 mt-4" />
+                <div className="border-t border-blue-500/50 pt-4 mt-4" />
 
                 {/* Skills as text badges */}
                 <div className="flex flex-wrap gap-2 mt-4">
@@ -129,7 +129,7 @@ const Skills = () => {
                     <motion.div
                       key={skillIndex}
                       whileHover={{ scale: 1.05 }}
-                      className="px-3 py-2 rounded-lg bg-transparent border border-white hover:bg-brand-surface-raised/40 hover:border-brand-accent transition-all text-sm font-medium text-gray-200 hover:text-brand-accent cursor-default"
+                      className="portfolio-badge portfolio-badge-hover"
                     >
                       {skill}
                     </motion.div>
@@ -146,9 +146,9 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ margin: '-50px' }}
-          className="mt-16 p-8 rounded-2xl bg-transparent border-2 border-white hover:bg-brand-surface-raised/40 hover:border-brand-accent transition-all duration-300"
+          className="mt-16 portfolio-card-lg portfolio-card-hover"
         >
-          <h3 className="text-3xl font-black text-white mb-8">Proficiency Levels</h3>
+          <h3 className="text-3xl font-black text-brand-text-primary mb-8">Proficiency Levels</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               { skill: 'Python & Data Science', level: 85 },
@@ -164,10 +164,10 @@ const Skills = () => {
                 viewport={{ margin: '-50px' }}
               >
                 <div className="flex justify-between mb-3">
-                  <span className="font-semibold text-gray-200">{item.skill}</span>
+                  <span className="font-semibold text-brand-text-secondary">{item.skill}</span>
                   <span className="font-bold text-brand-accent">{item.level}%</span>
                 </div>
-                <div className="w-full h-3 bg-brand-bg-primary rounded-full overflow-hidden border border-white/20">
+                <div className="w-full h-3 bg-brand-bg-primary rounded-full overflow-hidden border border-blue-500">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: `${item.level}%` }}

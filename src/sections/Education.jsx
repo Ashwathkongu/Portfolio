@@ -64,10 +64,10 @@ const Education = () => {
   return (
     <section
       id="education"
-      className="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8 flex items-center bg-transparent -mb-px overflow-hidden"
+      className="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8 flex items-center bg-transparent text-brand-text-primary -mb-px overflow-hidden"
     >
       {/* Section transition gradient overlay */}
-      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white/[0.01] via-white/[0.005] to-transparent pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-brand-accent/[0.01] via-brand-accent/[0.005] to-transparent pointer-events-none" />
       {/* Background effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-40 left-20 w-80 h-80 bg-gradient-to-br from-brand-accent/8 to-transparent rounded-full blur-3xl" />
@@ -83,14 +83,14 @@ const Education = () => {
           className="mb-20 text-center"
         >
           <h2 className="text-5xl sm:text-6xl font-black mb-6 leading-tight">
-            Education <span className="bg-gradient-to-r from-brand-accent to-amber-400 bg-clip-text text-transparent">Journey</span>
+            Education <span className="bg-gradient-to-r from-brand-accent to-blue-600 bg-clip-text text-transparent">Journey</span>
           </h2>
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ margin: '-50px' }}
-            className="w-24 h-1.5 bg-gradient-to-r from-brand-accent to-amber-400 rounded-full mx-auto mb-6"
+            className="w-24 h-1.5 bg-gradient-to-r from-brand-accent to-blue-600 rounded-full mx-auto mb-6"
             style={{ transformOrigin: 'center' }}
           />
         </motion.div>
@@ -111,12 +111,10 @@ const Education = () => {
                 key={index}
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
-                className={`relative p-8 rounded-2xl border-2 transition-all duration-300 group ${
+                className={`relative p-8 portfolio-card-lg portfolio-card-hover ${
                   isBachelor
-                    ? 'bg-transparent border-white hover:bg-brand-surface-raised/40 hover:border-brand-accent shadow-lg shadow-brand-accent/5'
-                    : isSecondary
-                    ? 'bg-transparent border-white hover:bg-brand-surface-raised/40 hover:border-brand-accent'
-                    : 'bg-transparent border-white hover:bg-brand-surface-raised/40 hover:border-brand-accent'
+                    ? 'border-brand-accent/40 shadow-lg shadow-brand-accent/5'
+                    : ''
                 }`}
               >
                 {/* Timeline marker */}
@@ -138,7 +136,7 @@ const Education = () => {
                       transition={{ delay: 0.2 }}
                       className="inline-block mb-3"
                     >
-                      <span className="px-3 py-1 text-xs font-semibold rounded-full bg-brand-accent/20 text-brand-accent border border-white/20">
+                      <span className="px-3 py-1 text-xs font-semibold rounded-full bg-brand-accent/20 text-brand-accent border border-blue-500">
                         {edu.status}
                       </span>
                     </motion.div>
@@ -147,7 +145,7 @@ const Education = () => {
                   {/* Header */}
                   <div className="mb-3">
                     <h3 className={`font-black mb-1 group-hover:text-brand-accent transition-colors ${
-                      isBachelor ? 'text-3xl text-white' : isSecondary ? 'text-2xl text-white' : 'text-xl text-gray-200'
+                      isBachelor ? 'text-3xl text-brand-text-primary' : isSecondary ? 'text-2xl text-brand-text-primary' : 'text-xl text-brand-text-secondary'
                     }`}>
                       {edu.degree}
                     </h3>
@@ -158,10 +156,10 @@ const Education = () => {
 
                   {/* Institution */}
                   <div className="mb-4">
-                    <p className={`font-semibold ${isBachelor ? 'text-lg' : isSecondary ? 'text-base' : 'text-sm'} text-gray-300`}>
+                    <p className={`font-semibold ${isBachelor ? 'text-lg' : isSecondary ? 'text-base' : 'text-sm'} text-brand-text-secondary`}>
                       {edu.institution}
                     </p>
-                    <p className="text-sm text-gray-400">{edu.location}</p>
+                    <p className="text-sm text-brand-text-muted">{edu.location}</p>
                   </div>
 
                   {/* CGPA/Score and Semester */}
@@ -171,19 +169,19 @@ const Education = () => {
                     {edu.cgpa && (
                       <div className="flex items-center gap-2">
                         <FaAward className="text-brand-accent" size={16} />
-                        <span className="text-gray-300">CGPA: <span className="font-semibold text-brand-accent">{edu.cgpa}</span></span>
+                        <span className="text-brand-text-secondary">CGPA: <span className="font-semibold text-brand-accent">{edu.cgpa}</span></span>
                       </div>
                     )}
                     {edu.score && (
                       <div className="flex items-center gap-2">
                         <FaAward className="text-brand-accent/70" size={16} />
-                        <span className="text-gray-400">Score: <span className="font-semibold text-brand-accent/80">{edu.score}</span></span>
+                        <span className="text-brand-text-muted">Score: <span className="font-semibold text-brand-accent/80">{edu.score}</span></span>
                       </div>
                     )}
                     {edu.semester && (
                       <div className="flex items-center gap-2">
                         <FaBook className="text-brand-accent" size={16} />
-                        <span className="text-gray-300">{edu.semester}</span>
+                        <span className="text-brand-text-secondary">{edu.semester}</span>
                       </div>
                     )}
                   </div>
@@ -201,7 +199,7 @@ const Education = () => {
                           className="flex items-start gap-3 text-sm"
                         >
                           <span className="w-1.5 h-1.5 bg-brand-accent rounded-full mt-1.5 flex-shrink-0 mt-2" />
-                          <span className="text-gray-300">{highlight}</span>
+                          <span className="text-brand-text-secondary">{highlight}</span>
                         </motion.div>
                       ))}
                     </div>

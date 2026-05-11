@@ -40,7 +40,7 @@ const SectionHeading = ({
       {/* Title */}
       <h2
         className={`section-title ${
-          variant === 'primary' ? 'text-white' : 'text-gradient-lg'
+          variant === 'primary' ? 'text-brand-text-primary' : 'text-gradient-lg'
         }`}
       >
         {title}

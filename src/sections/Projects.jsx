@@ -40,7 +40,7 @@ const Projects = () => {
       techStack: ['JavaScript', 'HTML', 'CSS', 'SVG', 'Offline-first Design'],
       github: 'https://github.com/Dharunkumar0/funfinity/tree/main/',
       featured: false,
-      accentColor: 'from-amber-500 to-orange-500',
+      accentColor: 'from-slate-300 to-white',
       tasks: [
         'Low-spec device optimization',
         'Offline-first architecture',
@@ -72,10 +72,10 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8 flex items-center bg-transparent text-white -mb-px overflow-hidden"
+      className="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8 flex items-center bg-transparent text-brand-text-primary -mb-px overflow-hidden"
     >
       {/* Section transition gradient overlay */}
-      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white/[0.01] via-white/[0.005] to-transparent pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-brand-accent/[0.01] via-brand-accent/[0.005] to-transparent pointer-events-none" />
       {/* Background Gradient Glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 -right-40 w-96 h-96 bg-gradient-to-bl from-purple-500/10 to-transparent rounded-full blur-3xl" />
@@ -91,16 +91,16 @@ const Projects = () => {
           className="mb-16 text-center"
         >
           <h2 className="text-5xl sm:text-6xl font-black mb-6 leading-tight">
-            Featured <span className="bg-gradient-to-r from-brand-accent to-amber-400 bg-clip-text text-transparent">Projects</span>
+            Featured <span className="bg-gradient-to-r from-brand-accent to-blue-600 bg-clip-text text-transparent">Projects</span>
           </h2>
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="w-24 h-1.5 bg-gradient-to-r from-brand-accent to-amber-400 rounded-full mx-auto mb-6"
+            className="w-24 h-1.5 bg-gradient-to-r from-brand-accent to-blue-600 rounded-full mx-auto mb-6"
             style={{ transformOrigin: 'center' }}
           />
-          <p className="text-lg text-gray-400">Building intelligent solutions with modern technologies and AI/ML expertise</p>
+          <p className="text-lg text-brand-text-muted">Building intelligent solutions with modern technologies and AI/ML expertise</p>
         </motion.div>
 
         <motion.div
@@ -115,10 +115,10 @@ const Projects = () => {
               key={project.id}
               variants={itemVariants}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className={`group relative rounded-2xl overflow-hidden border-2 transition-all duration-300 ${
+              className={`group relative overflow-hidden portfolio-card-hover ${
                 project.featured
-                  ? 'lg:col-span-2 lg:row-span-2 bg-transparent border-white hover:bg-brand-surface-raised/40 hover:border-brand-accent'
-                  : 'bg-transparent border-white hover:bg-brand-surface-raised/40 hover:border-brand-accent'
+                  ? 'lg:col-span-2 lg:row-span-2 portfolio-card-lg portfolio-card-featured'
+                  : 'portfolio-card-md'
               }`}
             >
               {/* Glow Backdrop */}
@@ -130,7 +130,7 @@ const Projects = () => {
               />
 
               {/* Content */}
-              <div className={`relative p-8 h-full flex flex-col ${project.featured ? 'lg:p-12' : ''}`}>
+              <div className="relative h-full flex flex-col">
                 {project.featured && (
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full">
                     {/* Left Column: Content */}
@@ -153,7 +153,7 @@ const Projects = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
                         viewport={{ margin: '-50px' }}
-                        className="font-black mb-4 text-white group-hover:text-brand-accent transition-colors duration-300 text-4xl"
+                        className="font-black mb-4 text-brand-text-primary group-hover:text-brand-accent transition-colors duration-300 text-4xl"
                       >
                         {project.title}
                       </motion.h3>
@@ -164,7 +164,7 @@ const Projects = () => {
                         whileInView={{ opacity: 1 }}
                         transition={{ duration: 0.5, delay: 0.15 }}
                         viewport={{ margin: '-50px' }}
-                        className="text-gray-300 mb-6 leading-relaxed flex-grow text-lg"
+                        className="text-brand-text-secondary mb-6 leading-relaxed flex-grow text-lg"
                       >
                         {project.description}
                       </motion.p>
@@ -178,7 +178,7 @@ const Projects = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.2 + idx * 0.08 }}
                             viewport={{ margin: '-50px' }}
-                            className="flex gap-2 text-sm text-gray-300 hover:text-gray-100 transition-colors"
+                            className="flex gap-2 text-sm text-brand-text-secondary hover:text-brand-text-primary transition-colors"
                           >
                             <span className="text-brand-accent mt-1 flex-shrink-0">→</span>
                             <span>{task}</span>
@@ -187,7 +187,7 @@ const Projects = () => {
                       </div>
 
                       {/* Tech Stack */}
-                      <div className="mb-6 pb-6 border-t border-brand-border/50">
+                      <div className="mb-6 pb-6 border-t border-blue-500/50">
                         <p className="text-xs font-bold text-brand-accent uppercase tracking-wider mb-3">Tech Stack</p>
                         <div className="flex flex-wrap gap-2">
                           {project.techStack.map((tech, idx) => (
@@ -197,8 +197,8 @@ const Projects = () => {
                               whileInView={{ opacity: 1, scale: 1 }}
                               transition={{ delay: 0.25 + idx * 0.06 }}
                               viewport={{ margin: '-50px' }}
-                              whileHover={{ scale: 1.08, backgroundColor: 'rgba(251, 191, 36, 0.1)' }}
-                              className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-brand-bg-primary border border-white/20 hover:border-brand-accent/70 text-gray-200 hover:text-brand-accent transition-all"
+                              whileHover={{ scale: 1.08, backgroundColor: 'rgba(59, 130, 246, 0.1)' }}
+                              className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-brand-bg-primary border border-blue-500 hover:border-brand-accent/70 text-brand-text-secondary hover:text-brand-accent transition-all"
                             >
                               {tech}
                             </motion.span>
@@ -216,7 +216,7 @@ const Projects = () => {
                           viewport={{ margin: '-50px' }}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-brand-accent/10 border border-white/20 text-brand-accent hover:bg-brand-accent/20 transition-all font-semibold text-sm"
+                          className="flex items-center gap-2 px-4 py-2.5 rounded-lg portfolio-button-secondary"
                         >
                           <FaGithub size={16} />
                           GitHub
@@ -325,7 +325,7 @@ const Projects = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.1 }}
                       viewport={{ margin: '-50px' }}
-                      className="font-black mb-4 text-white group-hover:text-brand-accent transition-colors duration-300 text-2xl"
+                      className="font-black mb-4 text-brand-text-primary group-hover:text-brand-accent transition-colors duration-300 text-2xl"
                     >
                       {project.title}
                     </motion.h3>
@@ -336,13 +336,13 @@ const Projects = () => {
                       whileInView={{ opacity: 1 }}
                       transition={{ duration: 0.5, delay: 0.15 }}
                       viewport={{ margin: '-50px' }}
-                      className="text-gray-300 mb-6 leading-relaxed flex-grow text-base"
+                      className="text-brand-text-secondary mb-6 leading-relaxed flex-grow text-base"
                     >
                       {project.description}
                     </motion.p>
 
                     {/* Tech Stack */}
-                    <div className="mb-6 pb-6 border-t border-brand-border/50">
+                    <div className="mb-6 pb-6 border-t border-blue-500/50">
                       <p className="text-xs font-bold text-brand-accent uppercase tracking-wider mb-3">Tech Stack</p>
                       <div className="flex flex-wrap gap-2">
                         {project.techStack.map((tech, idx) => (
@@ -352,8 +352,8 @@ const Projects = () => {
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.25 + idx * 0.06 }}
                             viewport={{ margin: '-50px' }}
-                            whileHover={{ scale: 1.08, backgroundColor: 'rgba(251, 191, 36, 0.1)' }}
-                            className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-brand-bg-primary border border-white/20 hover:border-brand-accent/70 text-gray-200 hover:text-brand-accent transition-all"
+                            whileHover={{ scale: 1.08, backgroundColor: 'rgba(59, 130, 246, 0.1)' }}
+                            className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-brand-bg-primary border border-blue-500 hover:border-brand-accent/70 text-brand-text-secondary hover:text-brand-accent transition-all"
                           >
                             {tech}
                           </motion.span>
@@ -371,7 +371,7 @@ const Projects = () => {
                         viewport={{ margin: '-50px' }}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-brand-accent/10 border border-white/20 text-brand-accent hover:bg-brand-accent/20 transition-all font-semibold text-sm"
+                        className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-brand-accent/10 border border-blue-500 text-brand-accent hover:bg-brand-accent/20 transition-all font-semibold text-sm"
                       >
                         <FaGithub size={16} />
                         GitHub
@@ -392,12 +392,12 @@ const Projects = () => {
           viewport={{ margin: '-50px' }}
           className="text-center pt-8"
         >
-          <p className="text-gray-400 mb-6">Interested in more projects?</p>
+          <p className="text-brand-text-muted mb-6">Interested in more projects?</p>
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-brand-accent to-amber-400 hover:shadow-lg hover:shadow-brand-accent/50 transition-all font-bold text-brand-bg-primary"
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-brand-accent to-blue-900 hover:shadow-lg hover:shadow-brand-accent/50 transition-all font-bold text-brand-bg-primary"
           >
             Get in Touch
             <FaExternalLinkAlt size={16} />

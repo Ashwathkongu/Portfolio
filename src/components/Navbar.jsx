@@ -103,8 +103,8 @@ function Navbar() {
             transition-all duration-300
             ${
               scrolled
-                ? 'bg-brand-bg-primary/30 backdrop-blur-2xl border-2 border-white shadow-lg'
-                : 'bg-brand-bg-primary/15 backdrop-blur-lg border-2 border-white'
+                ? 'bg-brand-surface-raised/60 backdrop-blur-2xl border-2 border-blue-500 shadow-lg'
+                : 'bg-white/40 backdrop-blur-lg border-2 border-blue-500'
             }
           `}
         >
@@ -123,7 +123,7 @@ function Navbar() {
           </motion.div>
 
           {/* Separator */}
-          <div className="w-px h-6 bg-white/30" />
+          <div className="w-px h-6 bg-brand-border/50" />
 
           {/* Navigation Icons Only */}
           <div className="flex items-center gap-2">
@@ -155,7 +155,7 @@ function Navbar() {
                     initial={{ opacity: 0, y: 10 }}
                     whileHover={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full mt-2 px-3 py-1.5 bg-brand-bg-primary border-2 border-white rounded-lg text-xs font-medium text-white whitespace-nowrap pointer-events-none z-50"
+                    className="absolute top-full mt-2 px-3 py-1.5 bg-white border-2 border-blue-500 rounded-lg text-xs font-medium text-brand-text-primary whitespace-nowrap pointer-events-none z-50"
                   >
                     {item.label}
                   </motion.div>
@@ -197,8 +197,8 @@ function Navbar() {
             transition-all duration-300
             ${
               scrolled
-                ? 'bg-brand-bg-primary/30 backdrop-blur-2xl border-2 border-white shadow-lg'
-                : 'bg-brand-bg-primary/15 backdrop-blur-lg border-2 border-white'
+                ? 'bg-brand-surface-raised/60 backdrop-blur-2xl border-2 border-blue-500 shadow-lg'
+                : 'bg-white/40 backdrop-blur-lg border-2 border-blue-500'
             }
           `}
         >
@@ -240,7 +240,7 @@ function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden"
+            className="fixed inset-0 bg-brand-text-primary/10 backdrop-blur-sm z-40 md:hidden"
             onClick={() => setIsOpen(false)}
           />
         )}
@@ -255,7 +255,7 @@ function Navbar() {
             exit="exit"
             className="
               fixed top-20 left-4 right-4 md:hidden z-40
-              bg-brand-bg-primary border border-brand-border/30
+              bg-brand-bg-primary border border-blue-500/30
               rounded-2xl backdrop-blur-xl shadow-xl
               overflow-hidden
             "

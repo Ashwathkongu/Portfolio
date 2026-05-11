@@ -85,7 +85,7 @@ function Home() {
       />
 
       {/* Section transition overlay */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0a0f1c] via-[#0a0f1c]/60 to-transparent pointer-events-none -z-10" />
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-brand-bg-primary via-brand-bg-primary/60 to-transparent pointer-events-none -z-10" />
 
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -98,8 +98,8 @@ function Home() {
           <motion.div className="space-y-8 flex flex-col justify-center relative z-10 max-w-lg">
             {/* Portfolio Label */}
             <motion.div variants={itemVariants} className='w-fit'>
-              <div className="border-2 border-white rounded-full px-4 py-2.5 w-fit">
-                <p className="text-gray-300 font-medium text-sm tracking-[0.15em] uppercase flex items-center gap-2">
+              <div className="border-2 border-blue-500 rounded-full px-4 py-2.5 w-fit">
+                <p className="text-brand-text-secondary font-medium text-sm tracking-[0.15em] uppercase flex items-center gap-2">
                   <span>← Portfolio</span>
                 </p>
               </div>
@@ -107,17 +107,17 @@ function Home() {
 
             {/* Name - Large Bold */}
             <motion.div variants={itemVariants}>
-              <h1 className="text-5xl sm:text-6xl lg:text-6xl font-black leading-tight text-white tracking-tight">
+              <h1 className="text-5xl sm:text-6xl lg:text-6xl font-black leading-tight text-brand-text-primary tracking-tight">
                 Ashwath<br />
               </h1>
-              <h1 className="text-5xl sm:text-6xl lg:text-6xl font-black leading-tight text-transparent bg-gradient-to-r from-brand-accent to-amber-400 bg-clip-text tracking-tight">
+              <h1 className="text-5xl sm:text-6xl lg:text-6xl font-black leading-tight text-transparent bg-gradient-to-r from-brand-accent to-blue-600 bg-clip-text tracking-tight">
                 Nagarajan
               </h1>
             </motion.div>
 
             {/* Role Badge */}
             <motion.div variants={itemVariants}>
-              <div className="inline-block px-4 py-2 border-2 border-gray-500 rounded text-gray-300 font-medium text-sm uppercase tracking-widest hover:border-brand-accent hover:text-brand-accent transition-colors duration-300">
+              <div className="inline-block px-4 py-2 border-2 border-blue-500 rounded text-brand-text-secondary font-medium text-sm uppercase tracking-widest hover:border-brand-accent hover:text-brand-accent transition-colors duration-300">
                 AI/ML Engineer
               </div>
             </motion.div>
@@ -125,7 +125,7 @@ function Home() {
             {/* Tagline */}
             <motion.p
               variants={itemVariants}
-              className="text-base sm:text-lg text-gray-400 leading-relaxed max-w-xl font-light"
+              className="text-base sm:text-lg text-brand-text-muted leading-relaxed max-w-xl font-light"
             >
               Building intelligent systems and scalable solutions that solve real-world problems.
             </motion.p>
@@ -165,7 +165,7 @@ function Home() {
               variants={itemVariants}
               className="flex items-center gap-4 pt-6"
             >
-              <p className="text-gray-400 font-medium text-sm uppercase tracking-widest">Connect:</p>
+              <p className="text-brand-text-muted font-medium text-sm uppercase tracking-widest">Connect:</p>
               {socialLinks.map((social, index) => {
                 const Icon = social.icon
                 return (
@@ -183,7 +183,7 @@ function Home() {
                       transition: { duration: 0.3 }
                     }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-11 h-11 rounded-lg border-2 border-gray-600 flex items-center justify-center text-gray-400 hover:text-brand-accent hover:border-brand-accent transition-all duration-300"
+                    className="w-11 h-11 rounded-lg border-2 border-blue-500 flex items-center justify-center text-brand-text-secondary hover:text-brand-accent hover:border-brand-accent transition-all duration-300"
                     aria-label={social.label}
                   >
                     <Icon size={20} />
@@ -211,7 +211,7 @@ function Home() {
               }}
               className="absolute inset-0 bg-radial-gradient rounded-full blur-3xl pointer-events-none -z-5"
               style={{
-                background: 'radial-gradient(circle, rgba(251, 191, 36, 0.2) 0%, rgba(251, 191, 36, 0.05) 30%, transparent 70%)',
+                background: 'radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0.05) 30%, transparent 70%)',
               }}
             />
 
@@ -241,7 +241,7 @@ function Home() {
               />
 
               {/* Main Image with Premium Styling */}
-              <div className="relative w-full h-full rounded-[24px] overflow-hidden border-2 border-white bg-transparent hover:bg-brand-surface-raised/40 hover:border-brand-accent transition-all duration-300 group">
+              <div className="relative w-full h-full rounded-[24px] overflow-hidden border-2 border-blue-500 bg-transparent hover:bg-brand-surface-raised/40 hover:border-brand-accent transition-all duration-300 group">
                 {/* Let's Connect Label */}
                 <a href='#contact'>
                   <motion.div
@@ -285,9 +285,9 @@ function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1, duration: 0.5 }}
-                className="absolute -bottom-24 left-1/2 transform -translate-x-1/2 max-w-sm bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 shadow-xl"
+                className="absolute -bottom-24 left-1/2 transform -translate-x-1/2 max-w-sm bg-white/5 backdrop-blur-sm border border-blue-500 rounded-lg p-4 shadow-xl"
               >
-                <p className="text-xs text-gray-300 italic leading-relaxed text-center">
+                <p className="text-xs text-brand-text-muted italic leading-relaxed text-center">
                   "*Building AI solutions that make a real impact.*"
                 </p>
               </motion.div>
@@ -305,7 +305,7 @@ function Home() {
           }}
           className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-3"
         >
-          <p className="text-xs font-light text-gray-500 uppercase tracking-[0.1em]">Scroll</p>
+          <p className="text-xs font-light text-brand-text-muted uppercase tracking-[0.1em]">Scroll</p>
           <div className="w-6 h-10 border border-gray-600 rounded-full flex justify-center hover:border-brand-accent/60 transition-colors duration-300">
             <motion.div
               animate={{ y: [4, 8, 4] }}

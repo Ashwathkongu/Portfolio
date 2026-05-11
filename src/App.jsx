@@ -19,7 +19,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0a0f1c] via-[#0c1423] to-[#020617] text-brand-text-primary selection:bg-brand-accent selection:text-brand-bg-primary relative">
+    <div className="min-h-screen bg-gradient-to-b from-[#c5ddf5] via-[#cde0f1] to-[#d4e8f9] text-brand-text-primary selection:bg-brand-accent selection:text-white relative">
       <AnimatedBackground />
       <Navbar />
       <main className="relative z-10">

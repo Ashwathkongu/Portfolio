@@ -6,29 +6,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Comprehensive color palette
+        // Comprehensive color palette - Light Theme
         brand: {
           bg: {
-            primary: '#0f172a',      // Main background
-            secondary: '#1a2847',    // Slightly lighter
-            tertiary: '#1e293b',     // Cards and sections
-            overlay: 'rgba(15, 23, 42, 0.8)',
+            primary: '#c5ddf5',      // Main background - more saturated sky blue
+            secondary: '#d1e5f8',    // Slightly lighter
+            tertiary: '#cde0f1',     // Cards and sections
+            overlay: 'rgba(197, 221, 245, 0.9)',
           },
           surface: {
-            raised: '#253550',       // Raised surfaces
-            input: '#162038',        // Input fields
-            hover: '#1e3a52',        // Hover state
+            raised: '#e8f2fb',       // Raised surfaces - more contrast
+            input: '#dce9f7',        // Input fields
+            hover: '#c0d9f0',        // Hover state
           },
           text: {
-            primary: '#ffffff',      // headings
-            secondary: '#e2e8f0',    // Body text
-            muted: '#94a3b8',        // Muted text
-            faded: '#64748b',        // Very faded
+            primary: '#0f172a',      // headings - dark text
+            secondary: '#1f2937',    // Body text - darker gray
+            muted: '#374151',        // Muted text
+            faded: '#6b7280',        // Very faded
           },
-          border: '#334155',         // Border color
-          accent: '#fbbf24',         // Primary yellow
-          'accent-hover': '#f59e0b',   // Darker yellow
-          'accent-light': '#fde047',   // Lighter yellow
+          border: '#cbd5e1',         // Border color - light gray
+          accent: '#3b82f6',         // Primary blue
+          'accent-hover': '#2563eb',   // Darker blue
+          'accent-light': '#60a5fa',   // Lighter blue
           success: '#10b981',        // Success green
           warning: '#f59e0b',        // Warning orange
         },
@@ -77,10 +77,10 @@ export default {
         },
         glow: {
           '0%, 100%': { 
-            boxShadow: '0 0 20px rgba(251, 191, 36, 0.5)',
+            boxShadow: '0 0 20px rgba(59, 130, 246, 0.5)',
           },
           '50%': { 
-            boxShadow: '0 0 40px rgba(251, 191, 36, 0.8)',
+            boxShadow: '0 0 40px rgba(59, 130, 246, 0.8)',
           },
         },
         shimmer: {
@@ -89,12 +89,12 @@ export default {
         },
       },
       boxShadow: {
-        'glow': '0 0 20px rgba(251, 191, 36, 0.3)',
-        'glow-lg': '0 0 40px rgba(251, 191, 36, 0.5)',
-        'glow-xl': '0 0 60px rgba(251, 191, 36, 0.7)',
-        'inner-glow': 'inset 0 0 20px rgba(251, 191, 36, 0.1)',
-        'card': '0 4px 6px rgba(0, 0, 0, 0.3)',
-        'card-lg': '0 20px 25px rgba(0, 0, 0, 0.2)',
+        'glow': '0 0 20px rgba(59, 130, 246, 0.3)',
+        'glow-lg': '0 0 40px rgba(59, 130, 246, 0.5)',
+        'glow-xl': '0 0 60px rgba(59, 130, 246, 0.7)',
+        'inner-glow': 'inset 0 0 20px rgba(59, 130, 246, 0.1)',
+        'card': '0 4px 6px rgba(0, 0, 0, 0.05)',
+        'card-lg': '0 20px 25px rgba(0, 0, 0, 0.1)',
       },
       spacing: {
         '128': '32rem',

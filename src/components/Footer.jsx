@@ -65,13 +65,13 @@ const Footer = () => {
   }
 
   return (
-    <footer className="relative bg-gradient-to-b from-brand-surface-raised/30 to-brand-surface-raised/50 overflow-hidden border-t border-white/10">
+    <footer className="relative bg-gradient-to-b from-brand-surface-raised/10 to-brand-surface-raised/20 overflow-hidden border-t border-blue-500/30">
       {/* Section transition gradient overlay */}
-      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white/[0.01] via-white/[0.005] to-transparent pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-brand-accent/[0.01] via-brand-accent/[0.005] to-transparent pointer-events-none" />
       {/* Background Gradient Glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-1/4 w-80 h-80 bg-gradient-to-br from-brand-accent/5 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-gradient-to-tl from-amber-500/5 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-gradient-to-tl from-slate-300/5 to-transparent rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-16 sm:py-20 relative z-10">
@@ -90,11 +90,11 @@ const Footer = () => {
             viewport={{ margin: '-50px' }}
             className="space-y-4"
           >
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
+            <h3 className="text-2xl font-bold bg-gradient-to-r from-brand-text-primary to-brand-text-secondary bg-clip-text text-transparent">
               Ashwath Nagarajan
             </h3>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Full-stack developer passionate about AI, web technologies, and creating impactful digital experiences.
+            <p className="text-brand-text-muted text-sm leading-relaxed">
+              FARM-stack developer passionate about AI, web technologies, and creating impactful digital experiences.
             </p>
           </motion.div>
 
@@ -106,7 +106,7 @@ const Footer = () => {
             viewport={{ margin: '-50px' }}
             className="space-y-4"
           >
-            <h4 className="text-white font-semibold text-sm tracking-wider uppercase">
+            <h4 className="text-brand-text-primary font-semibold text-sm tracking-wider uppercase">
               Navigation
             </h4>
             <ul className="space-y-3">
@@ -114,7 +114,7 @@ const Footer = () => {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-gray-400 hover:text-brand-accent transition-colors duration-300 text-sm"
+                    className="text-brand-text-muted hover:text-brand-accent transition-colors duration-300 text-sm"
                   >
                     {link.label}
                   </a>
@@ -131,7 +131,7 @@ const Footer = () => {
             viewport={{ margin: '-50px' }}
             className="space-y-4"
           >
-            <h4 className="text-white font-semibold text-sm tracking-wider uppercase">
+            <h4 className="text-brand-text-primary font-semibold text-sm tracking-wider uppercase">
               Get in Touch
             </h4>
             <ul className="space-y-3">
@@ -141,7 +141,7 @@ const Footer = () => {
                   <li key={index}>
                     <a
                       href={info.href}
-                      className="flex items-center gap-3 text-gray-400 hover:text-brand-accent transition-colors duration-300 group"
+                      className="flex items-center gap-3 text-brand-text-muted hover:text-brand-accent transition-colors duration-300 group"
                     >
                       <Icon className="w-5 h-5 flex-shrink-0 group-hover:text-brand-accent" />
                       <span className="text-sm">{info.value}</span>
@@ -160,7 +160,7 @@ const Footer = () => {
             viewport={{ margin: '-50px' }}
             className="space-y-4"
           >
-            <h4 className="text-white font-semibold text-sm tracking-wider uppercase">
+            <h4 className="text-brand-text-primary font-semibold text-sm tracking-wider uppercase">
               Connect
             </h4>
             <div className="flex gap-3">
@@ -178,11 +178,11 @@ const Footer = () => {
                   viewport={{ margin: '-50px' }}
                   whileHover={{ scale: 1.15, y: -3 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-accent/20 to-amber-400/10 border border-white/30 hover:border-brand-accent/60 flex items-center justify-center text-brand-accent transition-all duration-300 group"
+                  className="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-accent/20 to-slate-200/10 border border-blue-500 hover:border-brand-accent/60 flex items-center justify-center text-brand-accent transition-all duration-300 group"
                   aria-label={social.label}
                   title={social.label}
                 >
-                  <Icon className="text-base group-hover:text-amber-300 transition-colors duration-300" />
+                  <Icon className="text-base group-hover:text-slate-100 transition-colors duration-300" />
                 </motion.a>
               )
             })}
@@ -209,16 +209,16 @@ const Footer = () => {
           className="flex flex-col sm:flex-row justify-between items-center gap-6"
         >
           {/* Copyright */}
-          <p className="text-xs text-gray-500 text-center sm:text-left">
+          <p className="text-xs text-brand-text-muted text-center sm:text-left">
             © {currentYear}{' '}
-            <span className="text-gray-400">
+            <span className="text-brand-text-secondary">
               Ashwath Nagarajan.
             </span>{' '}
             All rights reserved.
           </p>
 
           {/* Built With */}
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-brand-text-muted">
             Designed & Built with ❤️ using React & Tailwind CSS
           </p>
 
@@ -231,10 +231,10 @@ const Footer = () => {
             whileHover={{ scale: 1.15, y: -3 }}
             whileTap={{ scale: 0.9 }}
             onClick={scrollToTop}
-            className="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-accent/20 to-amber-400/10 border border-white/30 hover:border-brand-accent/60 flex items-center justify-center text-brand-accent transition-all duration-300 group"
+            className="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-accent/20 to-slate-200/10 border border-blue-500 hover:border-brand-accent/60 flex items-center justify-center text-brand-accent transition-all duration-300 group"
             aria-label="Scroll to top"
           >
-            <FaArrowUp className="text-sm group-hover:text-amber-300 transition-colors duration-300" />
+            <FaArrowUp className="text-sm group-hover:text-slate-100 transition-colors duration-300" />
           </motion.button>
         </motion.div>
       </div>
