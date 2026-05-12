@@ -20,12 +20,35 @@ const AnimatedBackground = () => {
     const secondary = rootStyles.getPropertyValue('--wave-secondary').trim() || '34, 211, 238'
     const tertiary = rootStyles.getPropertyValue('--wave-tertiary').trim() || '99, 102, 241'
 
-    const layers = [
-      { color: primary, amplitude: 26, frequency: 1.4, speed: 0.18, offsetY: 0.36, opacity: 0.35, lines: 7 },
-      { color: secondary, amplitude: 22, frequency: 1.2, speed: 0.14, offsetY: 0.44, opacity: 0.28, lines: 6 },
-      { color: tertiary, amplitude: 18, frequency: 1.1, speed: 0.1, offsetY: 0.52, opacity: 0.22, lines: 5 },
-      { color: primary, amplitude: 12, frequency: 1.6, speed: 0.08, offsetY: 0.3, opacity: 0.18, lines: 4 },
+    const desktopLayers = [
+      { color: primary, amplitude: 26, frequency: 1.4, speed: 0.18, offsetY: 0.3, opacity: 0.35, lines: 10 },
+      { color: secondary, amplitude: 22, frequency: 1.2, speed: 0.14, offsetY: 0.4, opacity: 0.28, lines: 9 },
+      { color: tertiary, amplitude: 18, frequency: 1.1, speed: 0.1, offsetY: 0.5, opacity: 0.22, lines: 8 },
+      { color: primary, amplitude: 26, frequency: 1.4, speed: 0.18, offsetY: 0.3, opacity: 0.35, lines: 10 },
+      { color: secondary, amplitude: 22, frequency: 1.2, speed: 0.14, offsetY: 0.6, opacity: 0.28, lines: 9 },
+      { color: tertiary, amplitude: 18, frequency: 1.1, speed: 0.1, offsetY: 0.4, opacity: 0.22, lines: 8 },
+      { color: primary, amplitude: 12, frequency: 1.6, speed: 0.08, offsetY: 0.5, opacity: 0.18, lines: 7 },
+      { color: secondary, amplitude: 20, frequency: 1.3, speed: 0.12, offsetY: 0.35, opacity: 0.25, lines: 8 },
+      { color: tertiary, amplitude: 15, frequency: 1.5, speed: 0.16, offsetY: 0.55, opacity: 0.2, lines: 6 },
+      { color: primary, amplitude: 24, frequency: 1.1, speed: 0.11, offsetY: 0.45, opacity: 0.23, lines: 9 },
     ]
+
+    const mobileLayers = [
+      { color: primary, amplitude: 22, frequency: 1.4, speed: 0.18, offsetY: 0.05, opacity: 0.35, lines: 10 },
+      { color: secondary, amplitude: 18, frequency: 1.2, speed: 0.14, offsetY: 0.13, opacity: 0.28, lines: 9 },
+      { color: tertiary, amplitude: 16, frequency: 1.1, speed: 0.1, offsetY: 0.21, opacity: 0.22, lines: 8 },
+      { color: primary, amplitude: 22, frequency: 1.4, speed: 0.18, offsetY: 0.29, opacity: 0.35, lines: 10 },
+      { color: secondary, amplitude: 18, frequency: 1.2, speed: 0.14, offsetY: 0.37, opacity: 0.28, lines: 9 },
+      { color: tertiary, amplitude: 16, frequency: 1.1, speed: 0.1, offsetY: 0.45, opacity: 0.22, lines: 8 },
+      { color: primary, amplitude: 12, frequency: 1.6, speed: 0.08, offsetY: 0.53, opacity: 0.18, lines: 7 },
+      { color: secondary, amplitude: 18, frequency: 1.3, speed: 0.12, offsetY: 0.61, opacity: 0.25, lines: 8 },
+      { color: tertiary, amplitude: 14, frequency: 1.5, speed: 0.16, offsetY: 0.69, opacity: 0.2, lines: 6 },
+      { color: primary, amplitude: 20, frequency: 1.1, speed: 0.11, offsetY: 0.77, opacity: 0.23, lines: 9 },
+      { color: secondary, amplitude: 18, frequency: 1.3, speed: 0.12, offsetY: 0.85, opacity: 0.25, lines: 8 },
+      { color: tertiary, amplitude: 14, frequency: 1.5, speed: 0.16, offsetY: 0.93, opacity: 0.2, lines: 6 },
+    ]
+
+    let layers = window.innerWidth < 768 ? mobileLayers : desktopLayers
 
     const resize = () => {
       width = window.innerWidth
@@ -35,6 +58,9 @@ const AnimatedBackground = () => {
       canvas.style.width = `${width}px`
       canvas.style.height = `${height}px`
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+      
+      // Switch between desktop and mobile layers based on screen size
+      layers = width < 768 ? mobileLayers : desktopLayers
     }
 
     const createEdgeGradient = (color, alpha) => {
@@ -48,10 +74,11 @@ const AnimatedBackground = () => {
 
     const drawLayer = (time, layer) => {
       const baseY = height * layer.offsetY
-      const lineGap = 6
+      const lineGap = 10
       const lineOffsetStart = -((layer.lines - 1) * lineGap) / 2
       const drift = Math.sin(time * 0.3) * 6
       const verticalOsc = Math.sin(time * 0.6) * 3
+      const diagonalSlope = width < 768 ? -0.1 : 0
       const gradient = createEdgeGradient(layer.color, layer.opacity)
 
       ctx.strokeStyle = gradient
@@ -66,7 +93,8 @@ const AnimatedBackground = () => {
         const step = 10
         for (let x = 0; x <= width; x += step) {
           const progress = (x + drift) / width
-          const y = baseY + lineOffset + verticalOsc + Math.sin(progress * layer.frequency * Math.PI * 2 + phase) * layer.amplitude
+          const diagonalOffset = x * diagonalSlope
+          const y = baseY + lineOffset + verticalOsc + diagonalOffset + Math.sin(progress * layer.frequency * Math.PI * 2 + phase) * layer.amplitude
           if (x === 0) {
             ctx.moveTo(x, y)
           } else {

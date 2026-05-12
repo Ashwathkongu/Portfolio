@@ -80,9 +80,9 @@ const Education = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
           viewport={{ margin: '-50px' }}
-          className="mb-20 text-center"
+          className="mb-8 sm:mb-12 md:mb-20 text-center"
         >
-          <h2 className="text-5xl sm:text-6xl font-black mb-6 leading-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-4 sm:mb-6 leading-tight">
             Education <span className="bg-gradient-to-r from-brand-accent to-blue-600 bg-clip-text text-transparent">Journey</span>
           </h2>
           <motion.div
@@ -111,7 +111,7 @@ const Education = () => {
                 key={index}
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
-                className={`relative p-8 portfolio-card-lg portfolio-card-hover ${
+                className={`relative p-4 sm:p-6 md:p-8 portfolio-card-lg portfolio-card-hover ${
                   isBachelor
                     ? 'border-brand-accent/40 shadow-lg shadow-brand-accent/5'
                     : ''

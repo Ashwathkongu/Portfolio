@@ -88,9 +88,9 @@ const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ margin: '-50px' }}
-          className="mb-16 text-center"
+          className="mb-8 sm:mb-12 md:mb-16 text-center"
         >
-          <h2 className="text-5xl sm:text-6xl font-black mb-6 leading-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-4 sm:mb-6 leading-tight">
             Featured <span className="bg-gradient-to-r from-brand-accent to-blue-600 bg-clip-text text-transparent">Projects</span>
           </h2>
           <motion.div
@@ -108,7 +108,7 @@ const Projects = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ margin: '-100px' }}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8"
+          className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-4 sm:mb-6 md:mb-8"
         >
           {projects.map((project) => (
             <motion.div
@@ -132,7 +132,7 @@ const Projects = () => {
               {/* Content */}
               <div className="relative h-full flex flex-col">
                 {project.featured && (
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 h-full">
                     {/* Left Column: Content */}
                     <div className="flex flex-col">
                       {/* Featured Badge */}

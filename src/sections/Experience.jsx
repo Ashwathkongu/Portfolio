@@ -78,9 +78,9 @@ const Experience = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
           viewport={{ margin: '-50px' }}
-          className="mb-20 text-center"
+          className="mb-8 sm:mb-12 md:mb-20 text-center"
         >
-          <h2 className="text-5xl sm:text-6xl font-black mb-6 leading-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-4 sm:mb-6 leading-tight">
             Work <span className="bg-gradient-to-r from-brand-accent to-blue-600 bg-clip-text text-transparent">Experience</span>
           </h2>
           <motion.div
@@ -99,7 +99,7 @@ const Experience = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ margin: '-100px' }}
-          className="space-y-8"
+          className="space-y-4 sm:space-y-6 md:space-y-8"
         >
           {experiences.map((exp, index) => {
             const IconComponent = exp.icon
@@ -110,31 +110,31 @@ const Experience = () => {
                 className="relative"
               >
                 {/* Timeline Line and Marker */}
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-brand-accent via-brand-accent/50 to-transparent ml-7" />
-                <div className={`absolute left-0 top-8 w-16 h-16 rounded-full bg-transparent border-2 border-blue-500 flex items-center justify-center hover:bg-brand-surface-raised/40 hover:border-brand-accent transition-all duration-300 group`}>
-                  <IconComponent className={`text-2xl text-brand-text-primary group-hover:text-brand-accent transition-colors duration-300`} />
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-brand-accent via-brand-accent/50 to-transparent ml-3 sm:ml-7" />
+                <div className={`absolute left-0 top-4 sm:top-8 w-8 h-8 sm:w-16 sm:h-16 rounded-full bg-transparent border-2 border-blue-500 flex items-center justify-center hover:bg-brand-surface-raised/40 hover:border-brand-accent transition-all duration-300 group`}>
+                  <IconComponent className={`text-lg sm:text-2xl text-brand-text-primary group-hover:text-brand-accent transition-colors duration-300`} />
                 </div>
 
                 {/* Content Card */}
                 <motion.div
                   whileHover={{ y: -4, x: 8 }}
-                  className="ml-32 portfolio-card-lg portfolio-card-hover"
+                  className="ml-12 sm:ml-24 md:ml-32 portfolio-card-lg portfolio-card-hover"
                 >
                   {/* Header */}
-                  <div className="mb-4">
-                    <div className="flex items-start justify-between mb-2">
+                  <div className="mb-3 sm:mb-4">
+                    <div className="flex items-start justify-between mb-1 sm:mb-2">
                       <div>
-                        <h3 className="text-2xl font-black text-brand-text-primary mb-1">
+                        <h3 className="text-lg sm:text-xl md:text-2xl font-black text-brand-text-primary mb-0.5 sm:mb-1">
                           {exp.title}
                         </h3>
-                        <p className="text-lg text-brand-accent font-semibold">
+                        <p className="text-base sm:text-lg text-brand-accent font-semibold">
                           {exp.company}
                         </p>
                       </div>
                     </div>
 
                     {/* Meta Information */}
-                    <div className="flex flex-wrap gap-4 text-sm text-brand-text-muted mt-3">
+                    <div className="flex flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm text-brand-text-muted mt-2 sm:mt-3">
                       <div className="flex items-center gap-2">
                         <FaCalendar className="text-brand-accent" size={14} />
                         <span>{exp.duration}</span>
@@ -146,14 +146,14 @@ const Experience = () => {
                     </div>
                   </div>
 
-                  <div className="border-t border-blue-500/50 my-4" />
+                  <div className="border-t border-blue-500/50 my-3 sm:my-4" />
 
                   {/* Responsibilities */}
-                  <div className="mb-6">
-                    <p className="text-xs font-bold text-brand-accent uppercase tracking-wider mb-3">
+                  <div className="mb-4 sm:mb-6">
+                    <p className="text-xs font-bold text-brand-accent uppercase tracking-wider mb-2 sm:mb-3">
                       {exp.type === 'job' ? 'Responsibilities' : 'Achievements'}
                     </p>
-                    <ul className="space-y-3">
+                    <ul className="space-y-2 sm:space-y-3">
                       {exp.responsibilities.map((item, idx) => (
                         <motion.li
                           key={idx}
@@ -161,7 +161,7 @@ const Experience = () => {
                           whileInView={{ opacity: 1, x: 0 }}
                           transition={{ delay: idx * 0.05 }}
                           viewport={{ once: true }}
-                          className="flex gap-3 text-brand-text-secondary text-sm leading-relaxed"
+                          className="flex gap-2 sm:gap-3 text-brand-text-secondary text-xs sm:text-sm leading-relaxed"
                         >
                           <FaArrowRight className="text-brand-accent flex-shrink-0 mt-1" size={12} />
                           <span>{item}</span>

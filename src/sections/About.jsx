@@ -69,9 +69,9 @@ function About() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
           viewport={{ margin: '-50px' }}
-          className="mb-20 text-center"
+          className="mb-8 sm:mb-12 md:mb-20 text-center"
         >
-          <h2 className="text-5xl sm:text-6xl font-black mb-6 leading-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-4 sm:mb-6 leading-tight">
             About <span className="bg-gradient-to-r from-brand-accent to-blue-600 bg-clip-text text-transparent">Me</span>
           </h2>
           <motion.div
@@ -84,7 +84,7 @@ function About() {
           />
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-16 items-start">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -92,15 +92,15 @@ function About() {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <p className="text-lg sm:text-xl text-brand-text-secondary leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-brand-text-secondary leading-relaxed">
               I'm a passionate <span className="text-brand-accent font-semibold">AI engineer and full-stack developer</span> dedicated to creating intelligent solutions that solve real-world problems and drive innovation.
             </p>
 
-            <p className="text-lg sm:text-xl text-brand-text-secondary leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-brand-text-secondary leading-relaxed">
               My expertise spans <span className="text-brand-accent font-semibold">machine learning, NLP, web development, and system design</span>, with a proven track record of delivering production-grade applications and scalable architectures.
             </p>
 
-            <p className="text-lg sm:text-xl text-brand-text-secondary leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-brand-text-secondary leading-relaxed">
               I'm committed to continuous learning, collaboration, and using technology as a tool to create meaningful digital experiences and contribute to collaborative teams.
             </p>
           </motion.div>
@@ -110,7 +110,7 @@ function About() {
             initial="hidden"
             whileInView="visible"
             viewport={{ margin: '-50px' }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4"
           >
             {highlights.map((highlight, index) => {
               const Icon = highlight.icon
@@ -129,16 +129,16 @@ function About() {
                     <motion.div
                       whileHover={{ rotate: 10, scale: 1.1 }}
                       transition={{ duration: 0.3 }}
-                      className="mb-4 inline-flex p-3 rounded-xl bg-gradient-to-br from-brand-accent/20 to-blue-600/10 border border-blue-500 group-hover:border-brand-accent/80 text-brand-accent transition-all duration-300"
+                      className="mb-2 sm:mb-4 inline-flex p-2 sm:p-3 rounded-xl bg-gradient-to-br from-brand-accent/20 to-blue-600/10 border border-blue-500 group-hover:border-brand-accent/80 text-brand-accent transition-all duration-300"
                     >
-                      <Icon size={24} />
+                      <Icon size={20} className="sm:w-6 sm:h-6" />
                     </motion.div>
 
-                    <h3 className="text-lg font-bold text-brand-text-primary mb-2 group-hover:text-brand-accent transition-colors duration-300">
+                    <h3 className="text-base sm:text-lg font-bold text-brand-text-primary mb-1 sm:mb-2 group-hover:text-brand-accent transition-colors duration-300">
                       {highlight.title}
                     </h3>
 
-                    <p className="text-sm text-brand-text-muted leading-relaxed group-hover:text-brand-text-secondary transition-colors duration-300">
+                    <p className="text-xs sm:text-sm text-brand-text-muted leading-relaxed group-hover:text-brand-text-secondary transition-colors duration-300">
                       {highlight.description}
                     </p>
                   </div>

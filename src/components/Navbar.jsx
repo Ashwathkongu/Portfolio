@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiMenu, FiX, FiHome, FiUser, FiBook, FiCode, FiBriefcase, FiGrid, FiAward, FiMail } from 'react-icons/fi'
+import { FiHome, FiUser, FiBook, FiCode, FiBriefcase, FiGrid, FiAward, FiMail } from 'react-icons/fi'
 
 /**
  * Navbar Component
@@ -70,9 +70,9 @@ function Navbar() {
 
   // Mobile menu animation variants
   const mobileMenuVariants = {
-    hidden: { opacity: 0, y: -20 },
+    hidden: { opacity: 0, y: -100 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-    exit: { opacity: 0, y: -20, transition: { duration: 0.2 } },
+    exit: { opacity: 0, y: -100, transition: { duration: 0.2 } },
   }
 
   const mobileItemVariants = {
@@ -95,8 +95,8 @@ function Navbar() {
       >
         <div
           className={`
-            flex items-center justify-center gap-3
-            px-5 py-3
+            flex items-center justify-center gap-2
+            px-4 py-2.5
             rounded-full
             mt-6
             pointer-events-auto
@@ -116,14 +116,14 @@ function Navbar() {
           >
             <button
               onClick={() => handleNavClick('home')}
-              className="text-lg font-black bg-gradient-to-r from-brand-accent to-brand-accent-light bg-clip-text text-transparent hover:from-brand-accent-light hover:to-brand-accent transition-all duration-300"
+            className="text-sm font-black bg-gradient-to-r from-brand-accent to-brand-accent-light bg-clip-text text-transparent hover:from-brand-accent-light hover:to-brand-accent transition-all duration-300"
             >
               AN
             </button>
           </motion.div>
 
           {/* Separator */}
-          <div className="w-px h-6 bg-brand-border/50" />
+          <div className="w-px h-5 bg-brand-border/50" />
 
           {/* Navigation Icons Only */}
           <div className="flex items-center gap-2">
@@ -138,7 +138,7 @@ function Navbar() {
                   onClick={() => handleNavClick(item.id)}
                   title={item.label}
                   className={`
-                    relative w-10 h-10 rounded-lg
+                    relative p-1.5 rounded-lg
                     flex items-center justify-center
                     transition-all duration-300
                     group
@@ -149,7 +149,7 @@ function Navbar() {
                     }
                   `}
                 >
-                  <Icon size={20} className="shrink-0" />
+                  <Icon size={18} className="shrink-0" />
                   
                   {/* Tooltip on hover */}
                   <motion.div
@@ -172,7 +172,7 @@ function Navbar() {
                         duration: 0.4,
                         ease: 'easeInOut',
                       }}
-                      className="block w-2 h-2 bg-brand-accent rounded-full"
+                      className="block w-1.5 h-1.5 bg-brand-accent rounded-full"
                     />
                   </span>
                 </motion.button>
@@ -191,10 +191,10 @@ function Navbar() {
       >
         <div
           className={`
-            absolute left-1/2 -translate-x-1/2 top-4 sm:top-6
+            absolute left-1/2 -translate-x-1/2 top-3 sm:top-4
             max-w-fit
             flex items-center justify-between
-            px-5 sm:px-6 py-3
+            px-3 sm:px-4 py-2
             rounded-full
             pointer-events-auto
             transition-all duration-300
@@ -213,37 +213,49 @@ function Navbar() {
           >
             <button
               onClick={() => handleNavClick('home')}
-              className="text-lg sm:text-xl font-bold bg-gradient-to-r from-brand-accent to-brand-accent-light bg-clip-text text-transparent hover:from-brand-accent-light hover:to-brand-accent transition-all duration-300"
+              className="text-xs sm:text-sm font-bold bg-gradient-to-r from-brand-accent to-brand-accent-light bg-clip-text text-transparent hover:from-brand-accent-light hover:to-brand-accent transition-all duration-300"
             >
               AN 
             </button>
           </motion.div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Dynamic Section Icon */}
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(!isOpen)}
-            className="ml-6 p-2 rounded-lg hover:bg-brand-accent/10 transition-colors duration-300 text-brand-text-secondary hover:text-brand-accent"
+            className="ml-4 p-1.5 rounded-lg hover:bg-brand-accent/10 transition-colors duration-300 text-brand-text-secondary hover:text-brand-accent relative"
             aria-label="Toggle menu"
           >
-            {isOpen ? (
-              <FiX size={24} />
-            ) : (
-              <FiMenu size={24} />
-            )}
+            <AnimatePresence mode="wait">
+              {(() => {
+                const currentItem = navItems.find(item => item.id === activeSection)
+                const CurrentIcon = currentItem?.icon || FiHome
+                return (
+                  <motion.div
+                    key={activeSection}
+                    initial={{ x: 20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: -20, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <CurrentIcon size={20} />
+                  </motion.div>
+                )
+              })()}
+            </AnimatePresence>
           </motion.button>
         </div>
       </motion.nav>
 
-      {/* Mobile Navigation Menu */}
+      {/* Mobile Navigation Menu Background Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-brand-text-primary/10 backdrop-blur-sm z-40 md:hidden"
+            initial={{ opacity: 0, y: -100 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -100 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-brand-text-primary/20 backdrop-blur-md z-30 md:hidden"
             onClick={() => setIsOpen(false)}
           />
         )}
@@ -257,14 +269,13 @@ function Navbar() {
             animate="visible"
             exit="exit"
             className="
-              fixed top-20 left-4 right-4 md:hidden z-40
-              bg-brand-bg-primary border border-blue-500/30
-              rounded-2xl backdrop-blur-xl shadow-xl
-              overflow-hidden
+              fixed inset-0 md:hidden z-40
+              bg-brand-bg-primary backdrop-blur-xl
+              overflow-hidden pt-20
             "
           >
             {/* Mobile Navigation Links */}
-            <div className="flex flex-col divide-y divide-brand-border/20">
+            <div className="flex flex-col divide-y divide-brand-border/20 h-full">
               {navItems.map((item, index) => {
                 const isActive = activeSection === item.id
                 const Icon = item.icon
@@ -277,18 +288,18 @@ function Navbar() {
                     animate="visible"
                     onClick={() => handleNavClick(item.id)}
                     className={`
-                      w-full px-4 sm:px-6 py-3 sm:py-4 text-left
-                      font-medium text-sm sm:text-base
+                      w-full px-6 py-6 text-left flex-1
+                      font-medium text-base
                       transition-all duration-300
-                      flex items-center gap-3
+                      flex items-center gap-4
                       ${
                         isActive
-                          ? 'bg-brand-accent/10 text-brand-accent border-l-2 border-brand-accent'
+                          ? 'bg-brand-accent/10 text-brand-accent border-l-4 border-brand-accent'
                           : 'text-brand-text-secondary hover:bg-brand-accent/5 hover:text-brand-accent'
                       }
                     `}
                   >
-                    <Icon size={20} className={isActive ? 'text-brand-accent' : 'text-brand-text-secondary'} />
+                    <Icon size={24} className={isActive ? 'text-brand-accent' : 'text-brand-text-secondary'} />
                     <span>
                       {item.label}
                     </span>

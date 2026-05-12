@@ -92,14 +92,14 @@ function Home() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 lg:grid-cols-[1fr_0.95fr] gap-12 lg:gap-20 items-center w-full relative">
+          className="grid grid-cols-1 lg:grid-cols-[1fr_0.95fr] gap-8 sm:gap-12 lg:gap-20 items-center w-full relative">
         
           {/* LEFT COLUMN: Text Content */}
-          <motion.div className="space-y-8 flex flex-col justify-center relative z-10 max-w-lg">
+          <motion.div className="space-y-5 sm:space-y-7 lg:space-y-8 flex flex-col justify-center relative z-10 max-w-lg">
             {/* Portfolio Label */}
             <motion.div variants={itemVariants} className='w-fit'>
-              <div className="border-2 border-blue-500 rounded-full px-4 py-2.5 w-fit">
-                <p className="text-brand-text-secondary font-medium text-sm tracking-[0.15em] uppercase flex items-center gap-2">
+              <div className="border-2 sm:border-2 border-blue-400 sm:border-blue-500 rounded-full px-3 sm:px-4 py-2 sm:py-2.5 w-fit bg-blue-500/5 hover:bg-blue-500/10 transition-colors duration-300">
+                <p className="text-brand-text-secondary font-medium text-xs sm:text-sm tracking-[0.15em] uppercase flex items-center gap-2">
                   <span>← Portfolio</span>
                 </p>
               </div>
@@ -107,17 +107,17 @@ function Home() {
 
             {/* Name - Large Bold */}
             <motion.div variants={itemVariants}>
-              <h1 className="text-5xl sm:text-6xl lg:text-6xl font-black leading-tight text-brand-text-primary tracking-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-brand-text-primary tracking-tight">
                 Ashwath<br />
               </h1>
-              <h1 className="text-5xl sm:text-6xl lg:text-6xl font-black leading-tight text-transparent bg-gradient-to-r from-brand-accent to-blue-600 bg-clip-text tracking-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-transparent bg-gradient-to-r from-brand-accent to-blue-600 bg-clip-text tracking-tight">
                 Nagarajan
               </h1>
             </motion.div>
 
             {/* Role Badge */}
             <motion.div variants={itemVariants}>
-              <div className="inline-block px-4 py-2 border-2 border-blue-500 rounded text-brand-text-secondary font-medium text-sm uppercase tracking-widest hover:border-brand-accent hover:text-brand-accent transition-colors duration-300">
+              <div className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 border-2 border-blue-500 rounded text-brand-text-secondary font-medium text-xs sm:text-sm uppercase tracking-widest hover:border-brand-accent hover:text-brand-accent transition-colors duration-300">
                 AI/ML Engineer
               </div>
             </motion.div>
@@ -125,7 +125,7 @@ function Home() {
             {/* Tagline */}
             <motion.p
               variants={itemVariants}
-              className="text-base sm:text-lg text-brand-text-muted leading-relaxed max-w-xl font-light"
+              className="text-sm sm:text-base lg:text-lg text-brand-text-muted leading-relaxed max-w-xl font-light"
             >
               Building intelligent systems and scalable solutions that solve real-world problems.
             </motion.p>
@@ -133,7 +133,7 @@ function Home() {
             {/* CTA Buttons */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-wrap gap-4 pt-2"
+              className="flex flex-wrap gap-3 sm:gap-4 pt-2"
             >
               <Button
                 variant="primary"
@@ -163,9 +163,9 @@ function Home() {
             {/* Social Links */}
             <motion.div
               variants={itemVariants}
-              className="flex items-center gap-4 pt-6"
+              className="flex items-center gap-2 sm:gap-4 pt-4 sm:pt-6"
             >
-              <p className="text-brand-text-muted font-medium text-sm uppercase tracking-widest">Connect:</p>
+              <p className="text-brand-text-muted font-medium text-xs sm:text-sm uppercase tracking-widest">Connect:</p>
               {socialLinks.map((social, index) => {
                 const Icon = social.icon
                 return (
@@ -183,10 +183,10 @@ function Home() {
                       transition: { duration: 0.3 }
                     }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-11 h-11 rounded-lg border-2 border-blue-500 flex items-center justify-center text-brand-text-secondary hover:text-brand-accent hover:border-brand-accent transition-all duration-300"
+                    className="w-9 h-9 sm:w-11 sm:h-11 rounded-lg border-2 border-blue-500 flex items-center justify-center text-brand-text-secondary hover:text-brand-accent hover:border-brand-accent transition-all duration-300"
                     aria-label={social.label}
                   >
-                    <Icon size={20} />
+                    <Icon size={18} />
                   </motion.a>
                 )
               })}
@@ -196,7 +196,7 @@ function Home() {
           {/* RIGHT COLUMN: Premium Image Section */}
           <motion.div
             variants={itemVariants}
-            className="flex justify-center items-center relative pr-4"
+            className="flex justify-center items-center relative pr-2 sm:pr-4"
           >
             {/* Premium Background Glow Layer */}
             <motion.div
@@ -217,7 +217,7 @@ function Home() {
 
             {/* Image Container with Premium Effects */}
             <motion.div
-              className="relative flex items-center justify-center w-72 aspect-[3/4]"
+              className="relative flex items-center justify-center w-52 sm:w-64 lg:w-72 aspect-[3/4]"
             >
               {/* Soft Vignette Background */}
               <motion.div
@@ -248,7 +248,7 @@ function Home() {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8, duration: 0.5 }}
-                    className="absolute top-6 right-6 z-10 px-4 py-2 bg-brand-accent/90 text-white rounded-full text-xs font-semibold uppercase tracking-wider"
+                    className="absolute top-3 sm:top-6 right-3 sm:right-6 z-10 px-3 sm:px-4 py-1.5 sm:py-2 bg-brand-accent/90 text-white rounded-full text-xs font-semibold uppercase tracking-wider"
                   >
                     Let's Connect →
                   </motion.div>
@@ -267,7 +267,7 @@ function Home() {
                 <div 
                   className="absolute inset-0 pointer-events-none"
                   style={{
-                    background: 'radial-gradient(ellipse 80% 100% at 50% 100%, transparent 40%, rgba(0,0,0,0.6) 100%)',
+                    background: 'radial-gradient(ellipse 80% 95% at 50%, transparent 40%, rgba(0,0,0,0.6) 100%)',
                   }}
                 />
 
@@ -275,7 +275,7 @@ function Home() {
                 <div 
                   className="absolute inset-0 pointer-events-none"
                   style={{
-                    background: 'radial-gradient(ellipse 100% 50% at 50% 0%, rgba(251,191,36,0.1) 0%, transparent 60%)',
+                    background: 'radial-gradient(ellipse 100% 50% at 50% 100%, rgba(251,191,36,0.1) 0%, transparent 60%)',
                   }}
                 />
               </div>
